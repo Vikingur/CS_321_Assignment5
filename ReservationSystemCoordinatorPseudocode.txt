@@ -1,0 +1,48 @@
+public class ReservationSystem{
+
+	private String instructions;
+	private String output;
+
+	private ReservationSystem systemObject;
+	
+//Sends information and expects a return from UserIO.
+//Has the capability to send back output coded to ask for more information.
+//Essentially, UserIO can recognize requests for elaboration from ReservationSystem.
+
+	private ReservationSystem(){
+
+	}
+
+	public static ReservationSystem generateSystem(){
+		if(systemObject == null){
+			systemObject = new ReservationSystem();
+		}
+		return systemObject;		
+	}
+
+	//Gets instructions from userIO in a formatted String form.
+	public void processInstructions(String[] instruct){
+		//Based on the input at the beginning of instructions, do the correct function.
+		instructions = instruct;
+
+		if(instructions.length == 11 && instructions[0] == '1'){
+			output = CreateReservation.createReservation(instructions);
+		}
+
+		if(instructions.length == 5 && instructions[0] == '2'){
+			output = CheckIn.checkIn(instructions);
+		}
+
+		if(instructions.length == 2 && instructions[0] == '3'){
+			output = CheckOut.checkOut(instructions);
+		}
+
+		if(instructions.length == 1 && instructions[0] == '4'){
+				output = PrintManagementReport.printReport();
+		}
+
+		//Sends any necessary results or requests back to UserIO for processing.
+		//Accesses the static UserIO instance.
+		UserIO.IO_Object.returnInstructions(output);
+	}
+}

@@ -1,0 +1,41 @@
+public class UserIO {
+	//Mostly just calls the Framework functions to create the queue and get instructions.
+	//This method will be called by main.
+	private ArrayList<String[]> instructionQueue;
+	private static UserIO IO_Object;
+
+	public UserIO(){
+		instructionQueue = new ArrayList<String[]>();
+	}
+
+	public static void initializeUserIO(String filename){
+		
+		//Creates the static instances of every Business Logic Class that will be needed.
+		ReservationSystem.generateSystem();
+		/*
+
+
+		OTHER INITIALIZATION FUNCTIONS GO HERE.
+
+
+		*/		
+
+		//Starts up the system.
+		Framework.init(filename);
+		if(Framework.hasNextInstruction(){
+			loadInstruction(Framework.nextInstruction());
+		}
+	}
+
+	public void loadInstruction(String[] instruction){
+		instructionQueue.add(instruction);
+		ReservationSystem.processInstructions(instructionQueue.first());
+	}
+
+	public void returnInstructions(String[] instruction){
+		
+	}
+
+	
+
+}
