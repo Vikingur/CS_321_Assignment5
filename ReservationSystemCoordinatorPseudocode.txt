@@ -1,3 +1,27 @@
+/*
+
+PROCESS INSTRUCTIONS
+
+IF Instructions indicate that a new reservation is to be created THEN
+	Create reservation with instructions.
+ENDIF
+
+IF Instructions indicate that a check-in is being performed THEN
+	Run the check-in process with the instructions.
+ENDIF
+
+IF Instructions indicate that a check-out is being performed THEN
+	Run the check-out process with the instructions.
+ENDIF
+
+IF Instructions indicate that a managerial report is requested THEN
+	Request a Managerial Report
+ENDIF
+
+EXIT
+
+*/
+
 public class ReservationSystem{
 
 	private String instructions;
