@@ -1,0 +1,4 @@
+*.class
+
+!Framework.class
+!Parser.class
