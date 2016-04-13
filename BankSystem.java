@@ -1,28 +1,6 @@
 import java.util.*;
 import java.lang.*;
 
-// Proxy class of a customer for testing purposes
-// TODO Remove when Customer exists
-class Customer
-{
-    public Customer()
-    {
-	    	
-    }
-    public String getCCType()
-    {
-        return "MasterCard";
-    }
-    public String getCCNumber()
-    {
-        return "12342345 2835935 1  324";
-    }
-    public String getCCExpiration()
-    {
-        return "10/2015";
-    }
-}
-
 // Proxy class of the calender for testing purposes
 // TODO Remove when Calender exists
 class Calender
@@ -39,20 +17,24 @@ class Calender
 
 public class BankSystem
 {
-    public static boolean validateCard(Customer customer)
+	// returns true if card is valid, false otherwise
+    public static boolean validateCard(String ccNumber, String ccType, String ccExpiration)
     {
-        // get the customer's credit card info, converting the number into an
-        // integer
-        String ccType = customer.getCCType();
-        long ccNumber = Long.parseLong(customer.getCCNumber().replaceAll("[^0-9]",""));
+		// first check if the customer has a credit card number in the first place
+		if (ccNumber.equals(""))
+		{
+			return false;
+		}
+        // Convert customer's credit card information into a long int
+        long ccNumberLong = Long.parseLong(ccNumber.replaceAll("[^0-9]",""));
         
         // split the date on / and - characters
         // Assuming the format MONTH/YEAR
-        String[] ccExpiration = customer.getCCExpiration().split("(/|-)");
+        String[] ccMonthYear = ccExpiration.split("(/|-)");
 		
         // grab the Month/Year and convert to integers
-        int expirationMonth = Integer.parseInt(ccExpiration[0]);
-        int expirationYear = Integer.parseInt(ccExpiration[1]);
+        int expirationMonth = Integer.parseInt(ccMonthYear[0]);
+        int expirationYear = Integer.parseInt(ccMonthYear[1]);
     		
         // get the current month and year for comparison
         int currentMonth = Calender.getMonth();
@@ -63,7 +45,7 @@ public class BankSystem
         {
             // if the card is not expired. Send the number and type to
             // the external bank system for validation
-            return queryExternalBank(ccNumber,ccType);
+            return queryExternalBank(ccNumberLong,ccType);
         }
         return false;
     }
@@ -75,12 +57,28 @@ public class BankSystem
         // not expired is valid for simplicities sake
         return true;
     }
-    
-    // test method.
-    // TODO Remove when integrating BankSystem
-    public static void main(String[] args)
-    {
-        Customer c = new Customer();
-        System.out.println(""+validateCard(c));
-    }
+	
+	// returns true if charge successful, false otherwise
+	public static boolean chargeCustomer(int customerID, double paymentAmount)
+	{
+		// get the customer's cc info for validateCard
+		Customer c = Framework.getCustomerByID(customerID);
+		String ccNumber = c.getCCNumber();
+		String ccType = c.getCCType();
+		String ccExpiration = c.getCCExpiration();
+		
+		// check card validity
+		if (validateCard(ccNumber,ccType,ccExpiration))
+		{
+			// if valid, "charge" customer, return true for success
+			System.out.println("Customer charged, $"+String.format("%.2f",paymentAmount)+".");
+			return true;
+		}
+		else
+		{
+			// otherwise, report that the charge was unsuccessful
+			System.out.println("Card is invalid. No payment made.");
+			return false;
+		}
+	}
 }
