@@ -17,7 +17,7 @@ class managerReport {
 	int reserved = 0;
 	int unreserved = 0;
 	int occupancyRate = 0;
-	int revenue = 0;
+	double revenue = 0;
 	Arraylist<Integer> reservations;
 
 	public managerReport(Date day) {
@@ -42,19 +42,12 @@ class managerReport {
 		}
 
 		this.revenue = (Framework.SINGLE_RATE * singles) + (Framework.DOUBLE_RATE * doubles);
+		
+		getOccupancy(singles, doubles);
 	}
 
-	private void getOccupancy() {
-		this.reservations = currentDay.getIDs();
-		Iterator iterate = reservations.iterator();
-		Reservation reserve;
-		int occupantsByRoom;
-
-		while(iterate.hasNext()) {
-			reserve = iterate.next();
-			occupantsByRoom = reserve.getNumOccupants();
-			this.occupancyRate += occupantsByRoom;
-		}
+	private void getOccupancy(double singles, double doubles) {
+		this.occupancyRate =  (singles + doubles) / (Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS);
 	}
 
 	private void bulidReport() {
@@ -62,7 +55,6 @@ class managerReport {
 		this.reservations = currentDay.getNumReservations();
 		this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservations;
 		this.reserved = this.reservations
-		getOccupancy();
 		getRevenue();
 
 	}
