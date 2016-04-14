@@ -16,7 +16,7 @@ class managerReport {
 	int reservations = 0;
 	int reserved = 0;
 	int unreserved = 0;
-	int occupancyRate = 0;
+	double occupancyRate = 0;
 	double revenue = 0;
 	Arraylist<Integer> reservations;
 
