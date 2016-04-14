@@ -14,13 +14,13 @@ class checkOut {
 	public checkOut(Reservation reservation, int customerID) {
 
 		this.reservation = reservation;
-		this.customer = customerID
+		this.customer = customerID;
 	}
 
 	private void checkingOut() {
 
 		int daysReserved = reservation.getEndDate() - reservation.getStartDate();
-		double nightlyCharge = (reservation.getRoomType > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;
+		double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;
 
 		this.payment = daysReserved * nightlyCharge;
 		chargeCustomer();
@@ -35,6 +35,6 @@ class checkOut {
 
 	private void chargeCustomer() {
 
-		this.paid = bankSystem.chargeCustomer(customerID, payment);
+		this.paid = BankSystem.chargeCustomer(customer, payment);
 	}
 }

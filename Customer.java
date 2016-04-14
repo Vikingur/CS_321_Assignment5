@@ -68,4 +68,9 @@ public class Customer{
 	public String getCCExpiration(){
 		return ccExpiration;
 	}
+	
+	public int getCustomerID()
+	{
+		return customerID;
+	}
 }

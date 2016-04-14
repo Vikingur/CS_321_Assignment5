@@ -28,42 +28,35 @@ class managerReport {
 	}
 
 	private void getRevenue() {
-		this.reservations = currentDay.getIDs();
+		this.reservations = currentDay.getReservationIDs();
 		Iterator iterate = reservations.iterator();
 		Reservation reserve;
-		int singles = 0;
-		int doubles = 0;
+		double singles = 0;
+		double doubles = 0;
 
 		while(iterate.hasNext()) {
-			reserve = iterate.next();
-			if(reserve.getRoomType == 1)
+			reserve = (Reservation)iterate.next();
+			if(reserve.getRoomType() == 1)
 				singles++;
 			else
 				doubles++;
 		}
 
 		this.revenue = (Framework.SINGLE_RATE * singles) + (Framework.DOUBLE_RATE * doubles);
+		
+		getOccupancy(singles, doubles);
 	}
 
-	private void getOccupancy() {
-		this.reservations = currentDay.getIDs();
-		Iterator iterate = reservations.iterator();
-		Reservation reserve;
-		int occupantsByRoom;
-
-		while(iterate.hasNext()) {
-			reserve = iterate.next();
-			occupantsByRoom = reserve.getNumOccupants();
-			this.occupancyRate += occupantsByRoom;
-		}
+	private double getOccupancy(double singles, double doubles) {
+		this.occupancyRate = (singles + doubles) / (Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS);
+		return this.occupancyRate;
 	}
 
-	private void bulidReport() {
+	private void buildReport() {
 
-		this.reservations = currentDay.getNumReservations();
-		this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservations;
-		this.reserved = this.reservations;
-		getOccupancy();
+		this.reservationNum = currentDay.getNumReservations();
+		this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservationNum;
+		this.reserved = this.reservationNum;
 		getRevenue();
 
 	}

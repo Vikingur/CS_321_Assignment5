@@ -29,7 +29,7 @@ public class ReservationSystem{
 
 	public static ReservationSystem systemObject;
 	// calender that all functions can use
-	public static Calendar calender;
+	public static Calendar calendar = new Calendar();
 	
 //Sends information and expects a return from UserIO.
 //Has the capability to send back output coded to ask for more information.
@@ -43,7 +43,6 @@ public class ReservationSystem{
 		if(systemObject == null){
 			systemObject = new ReservationSystem();
 		}
-		calender = new Calender();
 		return systemObject;		
 	}
 

@@ -23,11 +23,11 @@ public class BankSystem
         int expirationYear = Integer.parseInt(ccMonthYear[1]);
     		
 		// get the current date to determine the month and year
-		Date date = ReservationSystem.calender.getCurrentDate();
+		Date date = ReservationSystem.calendar.getCurrentDate();
 		
         // get the current month and year for comparison
         int currentMonth = date.getMonth();
-        int currentYear = date.getyear();
+        int currentYear = date.getYear();
         
         // compare the current month/year to the expiration month/year
         if (currentYear*100+currentMonth<expirationYear*100+expirationMonth)

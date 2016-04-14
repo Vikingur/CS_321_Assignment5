@@ -15,7 +15,7 @@ public class CheckIn
 			return false;
 		}
 		// find the reservation with the customer id
-		cid = c.getCustomerID();
+		int cid = c.getCustomerID();
 		Reservation res = Framework.getReservationByCID(cid);
 		// check if the reservation is guaranteed
 		if (res.getGuaranteed()==1)
@@ -57,7 +57,7 @@ public class CheckIn
 			System.out.println("Customer not found.");
 			return false;
 		}
-		cid = c.getCustomerID();
+		int cid = c.getCustomerID();
 		Reservation res = Framework.getReservationByCID(cid);
 		// check if provided card is valid
 		if (BankSystem.validateCard(c.getCCNumber(),c.getCCType(),c.getCCExpiration()))

@@ -20,7 +20,7 @@ public class Reservation{
 		this.guaranteed = guaranteed;
 
 		this.reservationID = ++lastID;
-		while(Framework.getReservationByID(this.reservationID) != NULL){
+		while(Framework.getReservationByID(this.reservationID) != null){
 			this.reservationID = ++lastID;
 		}
 	}
@@ -32,7 +32,7 @@ public class Reservation{
 	}
 
 	public void setReservationID(int reservationID){
-		if(Framework.getReservationByID(reservationID) != NULL){
+		if(Framework.getReservationByID(reservationID) != null){
 			return;
 		}
 		this.reservationID = reservationID;
@@ -100,5 +100,10 @@ public class Reservation{
 
 	public int getCustomerID(){
 		return customerID;
+	}
+	
+	public int getGuaranteed()
+	{
+		return guaranteed;
 	}
 }
