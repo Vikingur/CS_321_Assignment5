@@ -3,7 +3,7 @@ import java.lang.*;
 
 public class CheckIn
 {
-	// run this if the customer does not provide new credit card info at checkin
+	// run this if the customer does not provide new credit card info at check-in
 	public static boolean checkIn(String customerName)
 	{
 		// find the customer with the framework

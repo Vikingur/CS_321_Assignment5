@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 
 /* FINAL REPORT SAYS:
 	Report gets info for the CURRENT DAY
@@ -18,7 +19,7 @@ class managerReport {
 	int unreserved = 0;
 	int occupancyRate = 0;
 	int revenue = 0;
-	Arraylist<Integer> reservations;
+	ArrayList<Integer> reservations;
 
 	public managerReport(Date day) {
 
@@ -61,7 +62,7 @@ class managerReport {
 
 		this.reservations = currentDay.getNumReservations();
 		this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservations;
-		this.reserved = this.reservations
+		this.reserved = this.reservations;
 		getOccupancy();
 		getRevenue();
 

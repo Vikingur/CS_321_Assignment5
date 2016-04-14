@@ -1,20 +1,6 @@
 import java.util.*;
 import java.lang.*;
 
-// Proxy class of the calender for testing purposes
-// TODO Remove when Calender exists
-class Calender
-{
-    public static int getYear()
-    {
-        return 2016;
-    }
-    public static int getMonth()
-    {
-        return 1;
-    }
-}
-
 public class BankSystem
 {
 	// returns true if card is valid, false otherwise
@@ -36,9 +22,12 @@ public class BankSystem
         int expirationMonth = Integer.parseInt(ccMonthYear[0]);
         int expirationYear = Integer.parseInt(ccMonthYear[1]);
     		
+		// get the current date to determine the month and year
+		Date date = ReservationSystem.calender.getCurrentDate();
+		
         // get the current month and year for comparison
-        int currentMonth = Calender.getMonth();
-        int currentYear = Calender.getYear();
+        int currentMonth = date.getMonth();
+        int currentYear = date.getyear();
         
         // compare the current month/year to the expiration month/year
         if (currentYear*100+currentMonth<expirationYear*100+expirationMonth)

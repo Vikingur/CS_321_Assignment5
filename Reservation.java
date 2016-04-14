@@ -20,14 +20,12 @@ public class Reservation{
 		this.guaranteed = guaranteed;
 
 		this.reservationID = ++lastID;
-		while(getReservationByID(this.reservationID) != NULL){
+		while(Framework.getReservationByID(this.reservationID) != NULL){
 			this.reservationID = ++lastID;
 		}
-		
-		Calendar.addReservation(this);
 	}
 
-	public cancelReservation(){
+	public void cancelReservation(){
 		if(roomNumber != -1){
 			Room.setRoomOccupancy(roomNumber, false);
 		}
@@ -61,11 +59,11 @@ public class Reservation{
 	}
 
 	public void setGuaranteed(int guaranteed){
-		this.guaranteed;
+		this.guaranteed = guaranteed;
 	}
 
 	public void setRoomNumber(int roomNum){
-		this.roomNumber;
+		this.roomNumber = roomNum;
 	}
 
 	public void setCustomerID(int customerID){

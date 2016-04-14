@@ -1,4 +1,4 @@
-import java.util.*
+import java.util.*;
 import java.util.ArrayList;
 
 public class Date{
@@ -33,6 +33,10 @@ public class Date{
 	}
 	public int getMonth(){
 		return month;
+	}
+	public int getYear()
+	{	// this is a retro simulation
+		return 2000;
 	}
 	public int getNumReservations(){
 		return numReservations;
