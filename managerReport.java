@@ -54,7 +54,6 @@ class managerReport {
 
 		this.reservationNum = currentDay.getNumReservations();
 		this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservations;
-		this.reserved = this.reservations
 		getRevenue();
 
 	}
