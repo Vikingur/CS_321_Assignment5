@@ -25,6 +25,14 @@ class Calendar {
 		Date day = days.get(date);
 		day.addReservation(id);
 	}
+	
+	public static int getYear() {
+		return 2016;
+	}
+	
+	public static int getMonth() {
+		return 1;
+	}
 }
 
 
