@@ -25,7 +25,7 @@ class checkOut {
 		this.payment = daysReserved * nightlyCharge;
 		chargeCustomer();
 
-		if(paid == true)
+		if(paid)
 			this.checkedOut = true;
 			
 		if(checkedOut) {
