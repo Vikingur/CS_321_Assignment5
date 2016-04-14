@@ -30,8 +30,8 @@ class managerReport {
 		this.reservations = currentDay.getIDs();
 		Iterator iterate = reservations.iterator();
 		Reservation reserve;
-		int singles = 0;
-		int doubles = 0;
+		double singles = 0;
+		double doubles = 0;
 
 		while(iterate.hasNext()) {
 			reserve = iterate.next();
