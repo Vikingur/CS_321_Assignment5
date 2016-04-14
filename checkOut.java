@@ -27,6 +27,10 @@ class checkOut {
 
 		if(paid == true)
 			this.checkedOut = true;
+			
+		if(checkedOut) {
+			reservation.setStatus(0); //As in its finished..?
+		}
 	}
 
 	private void chargeCustomer() {
