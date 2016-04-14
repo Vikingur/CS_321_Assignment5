@@ -14,11 +14,11 @@ import java.lang.*;
 class managerReport {
 
 	Date currentDay;
-	int reservations = 0;
+	int reservationNum = 0;
 	int reserved = 0;
 	int unreserved = 0;
-	int occupancyRate = 0;
-	int revenue = 0;
+	double occupancyRate = 0;
+	double revenue = 0;
 	ArrayList<Integer> reservations;
 
 	public managerReport(Date day) {
