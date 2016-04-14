@@ -27,7 +27,7 @@ class managerReport {
 	}
 
 	private void getRevenue() {
-		this.reservations = currentDay.getIDs();
+		this.reservations = currentDay.getReservationIDs();
 		Iterator iterate = reservations.iterator();
 		Reservation reserve;
 		double singles = 0;
