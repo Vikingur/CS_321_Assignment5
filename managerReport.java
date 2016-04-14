@@ -13,7 +13,7 @@ import java.util.*;
 class managerReport {
 
 	Date currentDay;
-	int reservations = 0;
+	int reservationNum = 0;
 	int reserved = 0;
 	int unreserved = 0;
 	double occupancyRate = 0;
@@ -52,7 +52,7 @@ class managerReport {
 
 	private void bulidReport() {
 
-		this.reservations = currentDay.getNumReservations();
+		this.reservationNum = currentDay.getNumReservations();
 		this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservations;
 		this.reserved = this.reservations
 		getRevenue();
