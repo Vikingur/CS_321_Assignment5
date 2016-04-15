@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Calendar {
 	//Class variables
-	ArrayList<Date> dates;
-	Date currentDate;
+	private static ArrayList<Date> dates;
+	private static Date currentDate;
 
 	//Class constructor
 	public Calendar() {
@@ -37,9 +37,8 @@ public class Calendar {
 	}
 	
    //Method that iterates across all reservations tied to a given day and changes their statuses appropriately
-	public static class processReservations{
-		public static void checkReservations(Calendar systemCalendar){
-			Date currentDate = systemCalendar.getCurrentDate();
+	public static class ProcessReservations{
+		public static void checkReservations(){
 			ArrayList<Integer> reservationIDs = currentDate.getReservationIDs();
 			Reservation currentReservation;
 			//Iterate across all reservations associated with the current date to flag as late, must-pay, cancel, etc.
@@ -50,9 +49,8 @@ public class Calendar {
 					//For reservations whose check-in dates have passed
 					if(currentDate.getDay() >= currentReservation.getStartDate()){
 						//Flag guaranteed reservations as 'must-pay' (status code = 5)
-						if(currentReservation.getGuaranteed() == 1){
+						if(currentReservation.getGuaranteed() == 1)
 							currentReservation.setStatus(5);
-                  }
 						//Flag not-guaranteed reservations as 'no-show' (status code = 4)
 						else
 							currentReservation.setStatus(4);
