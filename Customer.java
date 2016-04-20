@@ -1,76 +1,46 @@
-public class Customer{
+/*
+   This is the entity class representing individual Customers in the system.
+*/
 
+public class Customer{
+   //Class variables
 	private int customerID;
 	private String name;
 	private String address;
 	private String ccType;
 	private String ccNumber;
 	private String ccExpiration;
-	private static int lastID;
 
-	public Customer(String name, String address, String cType, String cNumber, String cExpiration){
-		this.name = name;
-		this.address = address;
-		this.ccType = cType;
-		this.ccNumber = cNumber;
-		this.ccExpiration = cExpiration;
-		this.customerID = ++lastID;
-		while(Framework.getCustomerByID(this.customerID) != null){
-			this.customerID = ++lastID;
-		}
-		Framework.storeCustomer(this);
+   //Class constructors
+   public Customer(){
+      customerID = -1;
+      name = null;
+      address = null;
+      ccType = null;
+      ccNumber = null;
+      ccExpiration = null;
+   }
+	public Customer(String inName, String inAddress, String inCCType, String inCCNumber, String inCCExpiration){
+		name = inName;
+      address = inAddress;
+      ccType = inCCType;
+      ccNumber = inCCNumber;
+      ccExpiration = inCCExpiration;
 	}
 
-	public void setCustomerID(int id){
-		if(Framework.getCustomerByID(id) != null){
-			return;
-		}
-
-		customerID = id;
-	}
-
-	public void setName(String name){
-		this.name = name;
-	}
-
-	public void setAddress(String address){
-		this.address = address;
-	}
-   
-	public void setCCType(String ccType){
-		this.ccType = ccType;
-	}
-
-	public void setCCNumber(String ccNumber){
-		this.ccNumber = ccNumber;
-	}
-
-	public void setCCExpiration(String ccExpiration){
-		this.ccExpiration = ccExpiration;
-	}
-
-	public String getName(){
-		return name;
-	}
-
-	public String getAddress(){
-		return address;
-	}
-
-	public String getCCType(){
-		return ccType;
-	}
-
-	public String getCCNumber(){
-		return ccNumber;
-	}
-
-	public String getCCExpiration(){
-		return ccExpiration;
-	}
+   //Class setters
+	public void setCustomerID(int inCustomerID){customerID = inCustomerID;}
+	public void setName(String inName){name = inName;}
+	public void setAddress(String inAddress){address = inAddress;} 
+	public void setCCType(String inCCType){ccType = inCCType;}
+	public void setCCNumber(String inCCNumber){ccNumber = inCCNumber;}
+	public void setCCExpiration(String inCCExpiration){ccExpiration = inCCExpiration;}
 	
-	public int getCustomerID()
-	{
-		return customerID;
-	}
+   //Class getters
+   public int getCustomerID(){return customerID;}
+   public String getName(){return name;}
+	public String getAddress(){return address;}
+	public String getCCType(){return ccType;}
+	public String getCCNumber(){return ccNumber;}
+	public String getCCExpiration(){return ccExpiration;}
 }
