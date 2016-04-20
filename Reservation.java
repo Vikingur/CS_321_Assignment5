@@ -1,109 +1,84 @@
+/*
+   This is the entity class representing individual Reservations in the system.
+*/
+
 public class Reservation{
+   //Class variables
 	private int reservationID;
 	private int status;
 	private int startDate;
 	private int endDate;
 	private int roomType;
 	private int numOccupants;
-	private int guaranteed;
-	//This'll be -1 until the Reservation actually gets assigned a room.
-	private int roomNumber = -1;
+	private boolean guaranteed;
+	private int roomNumber = -1;  //-1 until reservation is assigned a room at check-in
 	private int customerID;
-	private static int lastID;
-
-	public Reservation(int status, int startDate, int endDate, int roomType, int numOccupants, int guaranteed){
-		this.status = status;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.roomType = roomType;
-		this.numOccupants = numOccupants;
-		this.guaranteed = guaranteed;
-
-		this.reservationID = ++lastID;
-		while(Framework.getReservationByID(this.reservationID) != null){
-			this.reservationID = ++lastID;
-		}
-	}
-
-	public void cancelReservation(){
-		if(roomNumber != -1){
-			Room.setRoomOccupancy(roomNumber, false);
-		}
-	}
-
-	public void setReservationID(int reservationID){
-		if(Framework.getReservationByID(reservationID) != null){
-			return;
-		}
-		this.reservationID = reservationID;
-	}
-
-	public void setStatus(int status){
-		this.status = status;
-	}
-
-	public void setStartDate(int startDate){
-		this.startDate = startDate;
-	}
-
-	public void setEndDate(int endDate){
-		this.endDate = endDate;
-	}
-
-	public void setRoomType(int roomType){
-		this.roomType = roomType;
-	}
-
-	public void setNumOccupants(int numOccupants){
-		this.numOccupants = numOccupants;
-	}
-
-	public void setGuaranteed(int guaranteed){
-		this.guaranteed = guaranteed;
-	}
-
-	public void setRoomNumber(int roomNum){
-		this.roomNumber = roomNum;
-	}
-
-	public void setCustomerID(int customerID){
-		this.customerID = customerID;
-	}
-
-	public int getReservationID(){
-		return reservationID;
-	}
-
-	public int getStatus(){
-		return status;
-	}
-
-	public int getStartDate(){
-		return startDate;
-	}
-
-	public int getEndDate(){
-		return endDate;
-	}
-
-	public int getRoomType(){
-		return roomType;
-	}
-
-	public int getNumOccupants(){
-		return numOccupants;
-	}
-
-	public int getRoomNumber(){
-		return roomNumber;
-	}
-
-	public int getCustomerID(){
-		return customerID;
-	}
 	
-	public int getGuaranteed()
-	{
-		return guaranteed;
+   //Class constructors
+   public Reservation(){
+      customerID = -1;
+      reservationID = -1;
+      status = -1;
+      startDate = -1;
+      endDate = -1;
+      roomType = -1;
+      numOccupants = -1;
+      guaranteed = false;
+      roomNumber = -1;
+   }
+	public Reservation(int inStatus, int inStartDate, int inEndDate, int inRoomType, int inNumOccupants, int inGuaranteed, int inCustomerID){
+		status = inStatus;
+		startDate = inStartDate;
+      endDate = inEndDate;
+      roomType = inRoomType;
+      numOccupants = inNumOccupants;
+      if(inGuaranteed == 1) guaranteed = true; else guaranteed = false;
+      customerID = inCustomerID;
 	}
+
+   //Class setters
+	public void setReservationID(int inReservationID){reservationID = inReservationID;}
+	public void setStatus(int inStatus){status = inStatus;}
+	public void setStartDate(int inStartDate){startDate = inStartDate;}
+	public void setEndDate(int inEndDate){endDate = inEndDate;}
+	public void setRoomType(int inRoomType){roomType = inRoomType;}
+	public void setNumOccupants(int inNumOccupants){numOccupants = inNumOccupants;}
+	public void setGuaranteed(int inGuaranteed){if(inGuaranteed == 1)guaranteed = true; else guaranteed = false;}
+	public void setRoomNumber(int inRoomNumber){roomNumber = inRoomNumber;}
+	public void setCustomerID(int inCustomerID){customerID = inCustomerID;}
+
+   //Class getters
+	public int getReservationID(){return reservationID;}
+	public int getStatus(){return status;}
+	public int getStartDate(){return startDate;}
+	public int getEndDate(){return endDate;}
+	public int getRoomType(){return roomType;}
+	public int getNumOccupants(){return numOccupants;}
+   public int getGuaranteed(){if(guaranteed)return 1; else return 0;}
+	public int getRoomNumber(){return roomNumber;}
+	public int getCustomerID(){return customerID;}
+
+   //Static method that creates both a reservation and a customer and stores them in the Framework
+   public static void makeReservation(String[] inReservationInfo){
+      Customer customer = new Customer();
+      customer.setName(inReservationInfo(1));
+      customer.setAddress(inReservationInfo(2));
+      
+      Reservation reservation = new Reservation();
+      reservation.setStatus(1);
+      reservation.setStartDate(inReservationInfo(3));
+      reservation.setEndDate(inReservationInfo(4));
+      reservation.setRoomType(inReservationInfo(5));
+      reservation.setNumOccupants(inReservationInfo(6));
+      reservation.setGuaranteed(inReservationInfo(7));
+      //If reservation is guaranteed, read and store credit card info to customer
+      if(inReservationInfo(7) == 1){
+         customer.setCCType(inReservationInfo(8));
+         customer.setCCExpiration(inReservationInfo(9));
+         customer.setCCNumber(inReservationInfo(10));
+      }
+      int CID = Framework.storeCustomer(customer);
+      reservation.setCustomerID(CID);
+      Framework.storeReservation(reservation);
+   }
 }
