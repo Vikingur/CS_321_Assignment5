@@ -1,79 +1,59 @@
 /*
-
-PROCESS INSTRUCTIONS
-
-IF Instructions indicate that a new reservation is to be created THEN
-	Create reservation with instructions.
-ENDIF
-
-IF Instructions indicate that a check-in is being performed THEN
-	Run the check-in process with the instructions.
-ENDIF
-
-IF Instructions indicate that a check-out is being performed THEN
-	Run the check-out process with the instructions.
-ENDIF
-
-IF Instructions indicate that a managerial report is requested THEN
-	Request a Managerial Report
-ENDIF
-
-EXIT
-
+   This is the system coordinator. It accepts input from UserIO, determines which action to take,
+   and initates the appropriate process with the correct input parameters.
 */
 
-public class ReservationSystem{
+import java.util.*;
 
+
+public class ReservationSystem{
+   //Class variables
 	private String instructions[];
 	private String output[];
-
-	public static ReservationSystem systemObject;
-	// calender that all functions can use
+   
+   //Static 'global' variables
+	public static ReservationSystem systemCoordinator;
 	public static Calendar calendar = new Calendar();
 	
-//Sends information and expects a return from UserIO.
-//Has the capability to send back output coded to ask for more information.
-//Essentially, UserIO can recognize requests for elaboration from ReservationSystem.
-
-	private ReservationSystem(){
-
-	}
-
+   //Class constructors
+	public ReservationSystem(){}  
 	public static ReservationSystem generateSystem(){
-		if(systemObject == null){
-			systemObject = new ReservationSystem();
-		}
-		return systemObject;		
+		if(systemCoordinator == null){systemCoordinator = new ReservationSystem();}
+		return systemCoordinator;		
 	}
 
-	//Gets instructions from userIO in a formatted String form.
-	public void processInstructions(String[] instruct){
-		//Based on the input at the beginning of instructions, do the correct function.
-		instructions = instruct;
+   //Reads instruction relayed by userIO and initiates appropriate process
+	public void processInstructions(String[] inInstructions){
+		instructions = inInstructions;
 
-		if(instructions.length == 11 && instructions[0] == "1"){
-	//		output = CreateReservation.createReservation(instructions);
+      //If first element in input array is 1: Create reservation
+		if(instructions[0] == "@1"){
+         Reservation.makeReservation(instructions);
 		}
+      //If first element in input array is 2: Check-in
+      else if(instructions[0] == "@2"){
+         CheckIn.checkIn(instructions);
+      }
+      //If first element in input array is 3: Check-out
+      else if(instructions[0] == "@3"){
+         CheckOut.checkOut(instructions);
+      }
+      //If first element in input array is 4: Print management report
+      else if(instructions[0] == "@4"){
+         ManagerReport.createManagerReport(instructions);
+      }
+      //If first element in input array is 5: Day change signal
+      else if(instructions[0] == "@5"){
+         Calendar.dayChange();
+      }
+      //If first element in input array is 6: 6pm signal
+      else if(instructions[0] == "@6"){
+         Calendar.processReservations();
+      }
 
-		if(instructions.length == 5 && instructions[0] == "2"){
-      
-         if(instructions[2] == null){
-            CheckIn.checkIn(instructions[1]);
-         }
-			else CheckIn.checkIn(instructions[1], instructions[2], instructions[3], instructions[4]);
-		}
-
-		if(instructions.length == 2 && instructions[0] == "3"){
-	//		output = CheckOut.checkOut(instructions);
-		}
-
-		if(instructions.length == 1 && instructions[0] == "4"){
-	//			output = PrintManagementReport.printReport();
-		}
-
+		
 		//Sends any necessary results or requests back to UserIO for processing.
 		//Accesses the static UserIO instance.
 		UserIO.IO_Object.returnInstructions(output);
-	         //O_O//
    }
 }
