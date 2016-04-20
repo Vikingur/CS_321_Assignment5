@@ -61,28 +61,28 @@ public class Reservation{
    //Static method that creates both a reservation and a customer and stores them in the Framework
    public static void makeReservation(String[] inReservationInfo){
       Customer customer = new Customer();
-      customer.setName(inReservationInfo(1));
-      customer.setAddress(inReservationInfo(2));
+      customer.setName(inReservationInfo[1]);
+      customer.setAddress(inReservationInfo[2]);
       
       Reservation reservation = new Reservation();
       reservation.setStatus(1);
-      reservation.setStartDate(inReservationInfo(3));
-      reservation.setEndDate(inReservationInfo(4));
-      reservation.setRoomType(inReservationInfo(5));
-      reservation.setNumOccupants(inReservationInfo(6));
-      reservation.setGuaranteed(inReservationInfo(7));
+      reservation.setStartDate(inReservationInfo[3]);
+      reservation.setEndDate(inReservationInfo[4]);
+      reservation.setRoomType(inReservationInfo[5]);
+      reservation.setNumOccupants(inReservationInfo[6]);
+      reservation.setGuaranteed(inReservationInfo[7]);
       //If reservation is guaranteed, read and store credit card info to customer
-      if(inReservationInfo(7) == 1){
-         customer.setCCType(inReservationInfo(8));
-         customer.setCCExpiration(inReservationInfo(9));
-         customer.setCCNumber(inReservationInfo(10));
+      if(inReservationInfo[7] == 1){
+         customer.setCCType(inReservationInfo[8]);
+         customer.setCCExpiration(inReservationInfo[9]);
+         customer.setCCNumber(inReservationInfo[10]);
       }
       int CID = Framework.storeCustomer(customer);
       reservation.setCustomerID(CID);
       int RID = Framework.storeReservation(reservation);
       
       //Add reservation to the calendar on both the start and end dates
-      Calendar.getDate(inReservationInfo(3)).addReservation(RID);
-      Calendar.getDate(inReservationInfo(4)).addReservation(RID);
+      (Calendar.getDate(inReservationInfo(3))).addReservation(RID);
+      (Calendar.getDate(inReservationInfo(4))).addReservation(RID);
    }
 }
