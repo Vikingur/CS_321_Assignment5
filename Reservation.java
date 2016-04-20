@@ -79,6 +79,10 @@ public class Reservation{
       }
       int CID = Framework.storeCustomer(customer);
       reservation.setCustomerID(CID);
-      Framework.storeReservation(reservation);
+      int RID = Framework.storeReservation(reservation);
+      
+      //Add reservation to the calendar on both the start and end dates
+      Calendar.getDate(inReservationInfo(3)).addReservation(RID);
+      Calendar.getDate(inReservationInfo(4)).addReservation(RID);
    }
 }
