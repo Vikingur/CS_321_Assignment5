@@ -25,9 +25,10 @@ public class Room{
 		occupied = false;
 	}
    
-   //Populate room lists with rooms
-   for(int a = 1; a <= singleRooms.size(); a++){singleRooms.get(a-1) = new Room(a, 1);}
-   for(int b = 1; b <= doubleRooms.size(); b++){doubleRooms.get(b-1) = new Room(b + singleRooms.size(), 2);}
+   public static void populateRooms(){
+      for(int a = 1; a <= singleRooms.size(); a++){singleRooms.set(a-1, new Room(a,1));}
+      for(int b = 1; b <= doubleRooms.size(); b++){doubleRooms.set(b-1, new Room(b+singleRooms.size(), 2));}
+   }
    
 	//Class setters
    public static ArrayList<Room> getSingleRooms(){return singleRooms;}
@@ -37,9 +38,9 @@ public class Room{
    public boolean getOccupied(){return occupied;}
    
    //Class getters
-   public setRoomNumber(int inRoomNumber){roomNumber = inRoomNumber;}
-   public setRoomType(int inRoomType){roomType = inRoomType;}
-   public setOccupied(boolean inOccupancy){occupied = inOccupancy;}
+   public void setRoomNumber(int inRoomNumber){roomNumber = inRoomNumber;}
+   public void setRoomType(int inRoomType){roomType = inRoomType;}
+   public void setOccupied(boolean inOccupancy){occupied = inOccupancy;}
    
    //Searches through room lists to find an unoccupied room of requested room type
    public static int findRoom(int inRoomType){
@@ -48,7 +49,7 @@ public class Room{
          for(int a = 1; a <= singleRooms.size(); a++){
             if(singleRooms.get(a-1).getOccupied() == false){
                number = singleRooms.get(a-1).getRoomNumber();
-               singleRooms.get(a-1).setOccupied = true;
+               singleRooms.get(a-1).setOccupied(true);
                return number;
             }
          }
@@ -57,7 +58,7 @@ public class Room{
          for(int b = 1; b <= doubleRooms.size(); b++){
             if(doubleRooms.get(b-1).getOccupied() == false){
                number = doubleRooms.get(b-1).getRoomNumber();
-               doubleRooms.get(b-1).setOccupied = true;
+               doubleRooms.get(b-1).setOccupied(true);
                return number;
             }
          }
