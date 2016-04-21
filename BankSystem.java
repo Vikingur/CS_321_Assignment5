@@ -1,50 +1,35 @@
+/*
+   This is the prozy class representing the external Bank System.
+*/
+
 import java.util.*;
 import java.lang.*;
 
 public class BankSystem
 {
-	// returns true if card is valid, false otherwise
     public static boolean validateCard(String ccNumber, String ccType, String ccExpiration)
     {
-		// first check if the customer has a credit card number in the first place
-		if (ccNumber.equals(""))
-		{
-			return false;
-		}
-        // Convert customer's credit card information into a long int
-        long ccNumberLong = Long.parseLong(ccNumber.replaceAll("[^0-9]",""));
-        
-        // split the date on / and - characters
-        // Assuming the format MONTH/YEAR
-        String[] ccMonthYear = ccExpiration.split("(/|-)");
+		//Return false if card doesn't exist
+		if (ccNumber == null){return false;}
+      
+      //Convert customer's credit card information into a long int
+      long ccNumberLong = Long.parseLong(ccNumber.replaceAll("[^0-9]",""));
+       
+      //Split the date on / and - characters
+      String[] ccMonthYear = ccExpiration.split("(/|-)");
 		
-        // grab the Month/Year and convert to integers
-        int expirationMonth = Integer.parseInt(ccMonthYear[0]);
-        int expirationYear = Integer.parseInt(ccMonthYear[1]);
+      //Grab the Month/Year and convert to integers
+      int expirationMonth = Integer.parseInt(ccMonthYear[0]);
+      int expirationYear = Integer.parseInt(ccMonthYear[1]);
     		
-		// get the current date to determine the month and year
-		Date date = ReservationSystem.calendar.getCurrentDate();
-		
-        // get the current month and year for comparison
-        int currentMonth = date.getMonth();
-        int currentYear = date.getYear();
+		//Get the current date
+		Date date = Calendar.getCurrentDate();
+      int currentMonth = date.getMonth();
+      int currentYear = date.getYear();
         
-        // compare the current month/year to the expiration month/year
-        if (currentYear*100+currentMonth<expirationYear*100+expirationMonth)
-        {
-            // if the card is not expired. Send the number and type to
-            // the external bank system for validation
-            return queryExternalBank(ccNumberLong,ccType);
-        }
-        return false;
-    }
-	
-    private static boolean queryExternalBank(long ccNumber, String ccType)
-    {
-        // This is the function that "asks the external bank if the card 
-        // is valid" we're just going to assume that any card that is 
-        // not expired is valid for simplicities sake
-        return true;
+      //Compare the current month/year to the card's expiration month/year
+      if (currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)){return true;}
+      else {return false;}
     }
 	
 	// returns true if charge successful, false otherwise
