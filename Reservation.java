@@ -66,13 +66,13 @@ public class Reservation{
       
       Reservation reservation = new Reservation();
       reservation.setStatus(1);
-      reservation.setStartDate(inReservationInfo[3]);
-      reservation.setEndDate(inReservationInfo[4]);
-      reservation.setRoomType(inReservationInfo[5]);
-      reservation.setNumOccupants(inReservationInfo[6]);
-      reservation.setGuaranteed(inReservationInfo[7]);
+      reservation.setStartDate(Integer.parseInt(inReservationInfo[3]));
+      reservation.setEndDate(Integer.parseInt(inReservationInfo[4]));
+      reservation.setRoomType(Integer.parseInt(inReservationInfo[5]));
+      reservation.setNumOccupants(Integer.parseInt(inReservationInfo[6]));
+      reservation.setGuaranteed(Integer.parseInt(inReservationInfo[7]));
       //If reservation is guaranteed, read and store credit card info to customer
-      if(inReservationInfo[7] == 1){
+      if(Integer.parseInt(inReservationInfo[7]) == 1){
          customer.setCCType(inReservationInfo[8]);
          customer.setCCExpiration(inReservationInfo[9]);
          customer.setCCNumber(inReservationInfo[10]);
@@ -82,7 +82,7 @@ public class Reservation{
       int RID = Framework.storeReservation(reservation);
       
       //Add reservation to the calendar on both the start and end dates
-      (Calendar.getDate(inReservationInfo(3))).addReservation(RID);
-      (Calendar.getDate(inReservationInfo(4))).addReservation(RID);
+      (Calendar.getDate(Integer.parseInt(inReservationInfo[3]))).addReservation(RID);
+      (Calendar.getDate(Integer.parseInt(inReservationInfo[4]))).addReservation(RID);
    }
 }

@@ -14,7 +14,7 @@ public class Calendar {
 	}
 
 	//Constructor helper method (to populate with dates)
-	public void buildCalendar() {
+	public static void buildCalendar() {
 		for(int i=1; i<=Framework.NUM_DAYS; i++) {
 			dates.add(new Date(1,i));
 		}
@@ -26,13 +26,13 @@ public class Calendar {
 	}
 	
 	//Class getters
-	public Date getCurrentDate(){
+	public static Date getCurrentDate(){
 		return currentDate;
 	}
-	public ArrayList<Date> getDates(){
+	public static ArrayList<Date> getDates(){
 		return dates;
 	}
-	public Date getDate(int day){
+	public static Date getDate(int day){
 		return dates.get(day-1);
 	}
 	
