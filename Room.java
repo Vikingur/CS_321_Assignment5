@@ -65,4 +65,24 @@ public class Room{
       }
       return number;
    }
+   
+   public static boolean vacateRoom(int inRoomType, int inRoomNum){
+      if(inRoomType == 1){
+         for(int a = 1; a <= singleRooms.size(); a++){
+            if(singleRooms.get(a-1).getRoomNumber() == inRoomNum){
+               singleRooms.get(a-1).setOccupied(false);
+               return true;
+            }
+         }
+      }
+      else{
+         for(int b = 1; b <= doubleRooms.size(); b++){
+            if(doubleRooms.get(b-1).getRoomNumber() == inRoomNum){
+               doubleRooms.get(b-1).setOccupied(false);
+               return true;
+            }
+         }
+      }
+      return false;
+   }
 }

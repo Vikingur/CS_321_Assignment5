@@ -23,53 +23,43 @@ EXIT
 public class UserIO {
 	//Mostly just calls the Framework functions to create the queue and get instructions.
 	//This method will be called by main.
-	private ArrayList<String[]> instructionQueue;
-	public static UserIO IO_Object;
+   private ArrayList<String[]> instructionQueue;
+   public static UserIO IO_Object;
 
-	public UserIO(){
-		instructionQueue = new ArrayList<String[]>();
-	}
+   public UserIO(){
+      instructionQueue = new ArrayList<String[]>();
+   }
 
-	public static void initializeUserIO(String filename){
-		
-		//Creates the static instances of every Business Logic Class that will be needed.
-		ReservationSystem.generateSystem();
-		/*
-
-
-		OTHER INITIALIZATION FUNCTIONS GO HERE.
-
-
-		*/
-
-		//Starts up the system.
+   public static void main(String[] args){
+   	
+   	//Creates the static instances of every Business Logic Class that will be needed.
+      ReservationSystem.generateSystem();
+      UserIO.IO_Object = new UserIO();
+   
+   	//Starts up the system.
       try{
-         Framework.init(filename);
-		}
+         Framework.init(args[1]);
+      }
       catch (FileNotFoundException ex){
       
       }
       if(Framework.hasNextInstruction()){
-			IO_Object.loadInstruction(Framework.nextInstruction());
-		}
-	}
+         IO_Object.loadInstruction(Framework.nextInstruction());
+         ReservationSystem.systemCoordinator.processInstructions(IO_Object.instructionQueue.get(0));
+      }
+   }
 
-	public void loadInstruction(String[] instruction){
-		instructionQueue.add(instruction);
-	}
+   public void loadInstruction(String[] instruction){
+      instructionQueue.add(instruction);
+   }
 
-	public void returnInstructions(String[] instruction){
-		//If the message has no specific need, like re-entering instructions,
-		//simply print and call the next set of instructions.
-		
-
-		ReservationSystem.systemObject.processInstructions(instructionQueue.get(0));
-
-		//Otherwise, determine the newly needed information and prompt for it now.
-		
-		
-	}
-
-	
-
+   public void returnInstructions(String instruction){
+      System.out.println(instruction);
+   	//If the message has no specific need, like re-entering instructions,
+   	//simply print and call the next set of instructions.
+      if(Framework.hasNextInstruction()){
+         loadInstruction(Framework.nextInstruction());
+         ReservationSystem.systemCoordinator.processInstructions(IO_Object.instructionQueue.get(0));
+      }
+   }
 }

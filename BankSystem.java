@@ -1,5 +1,7 @@
 /*
-   This is the prozy class representing the external Bank System.
+   This is the proxy class representing the external Bank System.
+   It includes the functions validateCard and chargeCustomer.
+   validateCard will examine the card's expiration date
 */
 
 import java.util.*;

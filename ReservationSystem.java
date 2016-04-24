@@ -9,17 +9,17 @@ import java.util.*;
 public class ReservationSystem{
    //Class variables
 	private String instructions[];
-	private String output[];
+	private String output;
    
    //Static 'global' variables
 	public static ReservationSystem systemCoordinator;
 	public static Calendar calendar = new Calendar();
 	
    //Class constructors
-	public ReservationSystem(){}  
+	public ReservationSystem(){}
 	public static ReservationSystem generateSystem(){
 		if(systemCoordinator == null){systemCoordinator = new ReservationSystem();}
-		return systemCoordinator;		
+		return systemCoordinator;
 	}
 
    //Reads instruction relayed by userIO and initiates appropriate process
@@ -28,19 +28,20 @@ public class ReservationSystem{
 
       //If first element in input array is 1: Create reservation
 		if(instructions[0] == "@1"){
-         Reservation.makeReservation(instructions);
+          Reservation.makeReservation(instructions);
+          output = "Reservation Created.\nCustomer ID: "+Framework.getCustomerByName(instructions[1]).getCustomerID();
 		}
       //If first element in input array is 2: Check-in
       else if(instructions[0] == "@2"){
-         CheckIn.checkIn(instructions);
+         output = CheckIn.checkIn(instructions);
       }
       //If first element in input array is 3: Check-out
       else if(instructions[0] == "@3"){
-         CheckOut.checkOut(instructions);
+         output = CheckOut.checkOut(instructions);
       }
       //If first element in input array is 4: Print management report
       else if(instructions[0] == "@4"){
-         ManagerReport.createManagerReport(instructions);
+         ManagerReport m = new ManagerReport(instructions[1]);
       }
       //If first element in input array is 5: Day change signal
       else if(instructions[0] == "@5"){
@@ -48,9 +49,8 @@ public class ReservationSystem{
       }
       //If first element in input array is 6: 6pm signal
       else if(instructions[0] == "@6"){
-         Calendar.processReservations();
+         Calendar.ProcessReservations.checkReservations();
       }
-
 		
 		//Sends any necessary results or requests back to UserIO for processing.
 		//Accesses the static UserIO instance.

@@ -5,11 +5,13 @@ public class Calendar {
 	//Class variables
 	private static ArrayList<Date> dates;
 	private static Date currentDate;
+   private static int currentDateInt;
 
 	//Class constructor
 	public Calendar() {
 		dates = new ArrayList<Date>();
 		buildCalendar();
+      currentDateInt = 0;
 		currentDate = dates.get(0);
 	}
 
@@ -21,9 +23,14 @@ public class Calendar {
 	}
 
 	//Class setters
-	public void setCurrentDate(Date inDate){
+	public static void setCurrentDate(Date inDate){
 		currentDate = inDate;
 	}
+   
+   public static void dayChange(){
+      currentDateInt++;
+      setCurrentDate(dates.get(currentDateInt));
+   }
 	
 	//Class getters
 	public static Date getCurrentDate(){
