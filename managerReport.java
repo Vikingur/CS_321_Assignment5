@@ -25,7 +25,10 @@ public class ManagerReport{
       this.currentDay = Calendar.getDate((Integer.parseInt(instruction)));
       buildReport();
    }
-
+   
+   //Figures out revenue by getting the number of single/double rooms, and
+   //multiplying them by the rate for each. Calls getOccupancy at the end
+   //with the already calculated number of singles/double rooms.
    private void getRevenue() {
       this.reservations = currentDay.getReservationIDs();
       Iterator iterate = reservations.iterator();
@@ -45,12 +48,15 @@ public class ManagerReport{
    	
       getOccupancy(singles, doubles);
    }
-
+   
+   //Given the number of occupied singles and doubles, calculates
+   //the rate of Occupancy at the hotel.
    private double getOccupancy(double singles, double doubles) {
-      this.occupancyRate = (singles + doubles) / (Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS);
+      this.occupancyRate = ((singles + doubles) / (Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS)) * 100;
       return this.occupancyRate;
    }
-
+   
+   //Populates the values of the class variables. Calls getRevenue.
    private void buildReport() {
       this.reservationNum = currentDay.getNumReservations();
       this.unreserved = (Framework.NUM_SINGLE_ROOMS) + (Framework.NUM_DOUBLE_ROOMS) - this.reservationNum;
