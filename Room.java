@@ -25,6 +25,7 @@ public class Room{
 		occupied = false;
 	}
    
+   //Creates room lists for single and doubles. Single room#s are 1-#singleRooms and double room#s are (#singleRooms+1)-(#doubleRooms+#singleRooms)
    public static void populateRooms(){
       for(int a = 1; a <= singleRooms.size(); a++){singleRooms.set(a-1, new Room(a,1));}
       for(int b = 1; b <= doubleRooms.size(); b++){doubleRooms.set(b-1, new Room(b+singleRooms.size(), 2));}
@@ -65,23 +66,15 @@ public class Room{
       }
       return number;
    }
-   
+   //Vacates a particular room    
    public static boolean vacateRoom(int inRoomType, int inRoomNum){
       if(inRoomType == 1){
-         for(int a = 1; a <= singleRooms.size(); a++){
-            if(singleRooms.get(a-1).getRoomNumber() == inRoomNum){
-               singleRooms.get(a-1).setOccupied(false);
-               return true;
-            }
-         }
+         singleRooms.get(inRoomNum-1).setOccupied(false);
+         return true;
       }
       else{
-         for(int b = 1; b <= doubleRooms.size(); b++){
-            if(doubleRooms.get(b-1).getRoomNumber() == inRoomNum){
-               doubleRooms.get(b-1).setOccupied(false);
-               return true;
-            }
-         }
+         doubleRooms.get(inRoomNum-singleRooms.size()-1).setOccupied(false);
+         return true;
       }
       return false;
    }

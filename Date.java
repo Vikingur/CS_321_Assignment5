@@ -17,33 +17,16 @@ public class Date{
 	}
 
 	//Class setters
-	public void setDay(int inDay){
-		day = inDay;
-	}
-	public void setMonth(int inMonth){
-		month = inMonth;
-	}
-	public void setNumReservations(int inNum){
-		numReservations = inNum;
-	}
+	public void setDay(int inDay){day = inDay;}
+	public void setMonth(int inMonth){month = inMonth;}
+	public void setNumReservations(int inNum){numReservations = inNum;}
 	
 	//Class getters
-	public int getDay(){
-		return day;
-	}
-	public int getMonth(){
-		return month;
-	}
-	public int getYear()
-	{	// this is a retro simulation
-		return 2000;
-	}
-	public int getNumReservations(){
-		return numReservations;
-	}
-	public ArrayList<Integer> getReservationIDs(){
-		return reservationIDs;
-	}
+	public int getDay(){return day;}
+	public int getMonth(){return month;}
+	public int getYear(){return 2015;}
+	public int getNumReservations(){return numReservations;}
+	public ArrayList<Integer> getReservationIDs(){return reservationIDs;}
 	
 	//Reservation list methods
 	public void addReservation(int reservationId) {
