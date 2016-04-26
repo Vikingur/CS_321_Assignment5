@@ -28,9 +28,8 @@ public class ReservationSystem{
 
       //If first element in input array is 1: Create reservation
 		if(instructions[0] == "@1"){
-          Reservation.makeReservation(instructions);
-          output = "Reservation Created.\nCustomer ID: "+Framework.getCustomerByName(instructions[1]).getCustomerID();
-		}
+          output = Reservation.makeReservation(instructions) + "Customer ID: "+ Framework.getCustomerByName(instructions[1]).getCustomerID();
+ 		}
       //If first element in input array is 2: Check-in
       else if(instructions[0] == "@2"){
          output = CheckIn.checkIn(instructions);

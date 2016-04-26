@@ -1,7 +1,11 @@
+/*
+   This is the check-out business logic object. It ensures that a valid credit card is on file, 
+   and that enough rooms are available, before checking a customer into their reservation.
+*/
 import java.util.*;
 
 public class CheckOut {
-
+   //Class variables
    Reservation reservation;
    boolean checkedOut = false;
    boolean reservationComplete = false;
@@ -25,5 +29,9 @@ public class CheckOut {
          return "Check Out completed. Thank you for choosing us!";
       }
       return "Check Out could not be completed. Please re-enter information and try again!";
+   }
+   
+   public static String checkOutReceipt(int reservationID){
+   
    }
 }

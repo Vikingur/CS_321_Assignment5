@@ -59,7 +59,7 @@ public class Reservation{
 	public int getCustomerID(){return customerID;}
 
    //Static method that creates both a reservation and a customer and stores them in the Framework
-   public static void makeReservation(String[] inReservationInfo){
+   public static String makeReservation(String[] inReservationInfo){
       Customer customer = new Customer();
       customer.setName(inReservationInfo[1]);
       customer.setAddress(inReservationInfo[2]);
@@ -84,5 +84,7 @@ public class Reservation{
       //Add reservation to the calendar on both the start and end dates
       (Calendar.getDate(Integer.parseInt(inReservationInfo[3]))).addReservation(RID);
       (Calendar.getDate(Integer.parseInt(inReservationInfo[4]))).addReservation(RID);
+      
+      return "Successfully created reservation.\n";
    }
 }
