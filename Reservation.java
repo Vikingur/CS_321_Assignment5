@@ -74,9 +74,9 @@ public class Reservation{
       //If reservation is guaranteed, read and store credit card info to customer
       if(Integer.parseInt(inReservationInfo[7]) == 1){
       	if(validateCard(inReservationInfo[8], inReservationInfo[9], inReservationInfo[10])) {
-         customer.setCCType(inReservationInfo[8]);
-         customer.setCCExpiration(inReservationInfo[9]);
-         customer.setCCNumber(inReservationInfo[10]);
+        	customer.setCCType(inReservationInfo[8]);
+        	customer.setCCExpiration(inReservationInfo[9]);
+        	customer.setCCNumber(inReservationInfo[10]);
       	}
       	else {
       		return "Given credit card not valid.";
