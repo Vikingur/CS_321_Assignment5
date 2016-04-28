@@ -29,9 +29,14 @@ public class BankSystem
       int currentMonth = date.getMonth();
       int currentYear = date.getYear();
         
-      //Compare the current month/year to the card's expiration month/year
-      if (ccNumber.length()==16 &&(currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)){return true;}
-      else {return false;}
+    //Compare the current month/year to the card's expiration month/year
+    if (String.valueOf(ccNumberLong).length()==16 && (currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)))
+    {
+        return true;
+    }
+    else
+    {
+        return false;}
     }
 	
 	// returns true if charge successful, false otherwise
