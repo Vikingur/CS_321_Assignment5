@@ -82,7 +82,7 @@ public class ManagerReport{
       "Total Revenue: $"+df.format(revenue);
    }
 
-   /*// testing manager report
+   // testing manager report
    public static void main(String[] args)
    {
       try
@@ -97,5 +97,5 @@ public class ManagerReport{
       Calendar.buildCalendar();
       ManagerReport rep = new ManagerReport("1");
       System.out.println(rep);
-   }*/
+   }
 }

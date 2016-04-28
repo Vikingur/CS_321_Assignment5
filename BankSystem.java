@@ -30,7 +30,7 @@ public class BankSystem
       int currentYear = date.getYear();
         
       //Compare the current month/year to the card's expiration month/year
-      if (currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)){return true;}
+      if (ccNumber.length()==16 &&(currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)){return true;}
       else {return false;}
     }
 	
