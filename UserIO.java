@@ -35,6 +35,7 @@ public class UserIO {
    	//Creates the static instances of every Business Logic Class that will be needed.
       ReservationSystem.generateSystem();
       UserIO.IO_Object = new UserIO();
+      Logger.initLogger(args[1]);
    
    	//Starts up the system.
       try{

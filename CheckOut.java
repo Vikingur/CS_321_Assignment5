@@ -32,6 +32,6 @@ public class CheckOut {
    }
    
    public static String checkOutReceipt(int reservationID){
-   
+      return "";
    }
 }

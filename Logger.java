@@ -13,7 +13,8 @@ public class Logger
 		inFile = file;
 		outFile = "HRSLOG_"+inFile;
 		File f = new File(outFile);
-		try {
+		try
+		{
 			out = new PrintWriter(f,"UTF-8");
 		}
 		catch (Exception e)
@@ -22,8 +23,20 @@ public class Logger
 		}
 	}
 	
-	public static void closeWriter()
+	public static void closeLogger()
 	{
 		out.close();
+	}
+
+	public static void writeln(String s)
+	{
+		try
+		{
+			out.println(s);
+		}
+		catch(Exception e)
+		{
+
+		}
 	}
 }

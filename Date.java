@@ -34,7 +34,7 @@ public class Date{
 		numReservations++;
 	}
    public void removeReservation(int reservationId){
-      reservationIDs.remove(reservationIDs.getIndexOf(reservationId));
+      reservationIDs.remove(reservationIDs.indexOf(reservationId));
       numReservations--;
    }
 }

@@ -76,6 +76,5 @@ public class Room{
          doubleRooms.get(inRoomNum-singleRooms.size()-1).setOccupied(false);
          return true;
       }
-      return false;
    }
 }

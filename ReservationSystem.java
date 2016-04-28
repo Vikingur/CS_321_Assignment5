@@ -48,7 +48,7 @@ public class ReservationSystem{
       }
       //If first element in input array is 6: 6pm signal
       else if(instructions[0] == "@6"){
-         Calendar.ProcessReservations.checkReservations();
+         ProcessReservations.checkReservations(Calendar.getCurrentDate());
       }
 		
 		//Sends any necessary results or requests back to UserIO for processing.
