@@ -48,6 +48,7 @@ public class UserIO {
          IO_Object.loadInstruction(Framework.nextInstruction());
          ReservationSystem.systemCoordinator.processInstructions(IO_Object.instructionQueue.get(0));
       }
+      Logger.closeLogger();
    }
 
    public void loadInstruction(String[] instruction){

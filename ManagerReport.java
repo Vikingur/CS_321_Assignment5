@@ -1,5 +1,6 @@
 import java.util.*;
 import java.lang.*;
+import java.text.*;
 
 /* FINAL REPORT SAYS:
 	Report gets info for the CURRENT DAY
@@ -17,6 +18,8 @@ public class ManagerReport{
    int reservationNum = 0;
    int reserved = 0;
    int unreserved = 0;
+   int singles;
+   int doubles;
    double occupancyRate = 0;
    double revenue = 0;
    ArrayList<Integer> reservations;
@@ -33,8 +36,8 @@ public class ManagerReport{
       this.reservations = currentDay.getReservationIDs();
       Iterator iterate = reservations.iterator();
       Reservation reserve;
-      double singles = 0;
-      double doubles = 0;
+      singles = 0;
+      doubles = 0;
    
       while(iterate.hasNext()) {
          reserve = (Reservation)iterate.next();
@@ -44,7 +47,7 @@ public class ManagerReport{
             doubles++;
       }
    
-      this.revenue = (Framework.SINGLE_RATE * singles) + (Framework.DOUBLE_RATE * doubles);
+      this.revenue = (Framework.SINGLE_RATE * (double)singles) + (Framework.DOUBLE_RATE * (double)doubles);
    	
       getOccupancy(singles, doubles);
    }
@@ -63,4 +66,36 @@ public class ManagerReport{
       this.reserved = this.reservationNum;
       getRevenue();
    }
+
+   public String toString()
+   {
+      DecimalFormat df = new DecimalFormat("0.00");
+      DecimalFormat rf = new DecimalFormat("0.##");
+      int month = currentDay.getMonth();
+      int day = currentDay.getDay();
+      int year = currentDay.getYear();
+      return "Management Report for "+month+"/"+day+"/"+year+"\n"+
+      "Number of Reservations: "+reservationNum+"\n"+
+      "Single Rooms Reserved: "+singles+"\n"+
+      "Double Rooms Reserved: "+doubles+"\n"+
+      "Occupancy Rate: "+rf.format(occupancyRate)+"%"+"\n"+
+      "Total Revenue: $"+df.format(revenue);
+   }
+
+   /*// testing manager report
+   public static void main(String[] args)
+   {
+      try
+      {
+         Framework.init(args[1]);
+      }
+      catch (Exception e)
+      {
+
+      }
+      Calendar.initCalendar();
+      Calendar.buildCalendar();
+      ManagerReport rep = new ManagerReport("1");
+      System.out.println(rep);
+   }*/
 }

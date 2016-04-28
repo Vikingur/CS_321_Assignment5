@@ -13,7 +13,6 @@ public class ReservationSystem{
    
    //Static 'global' variables
 	public static ReservationSystem systemCoordinator;
-	public static Calendar calendar = new Calendar();
 	
    //Class constructors
 	public ReservationSystem(){}
@@ -41,6 +40,7 @@ public class ReservationSystem{
       //If first element in input array is 4: Print management report
       else if(instructions[0] == "@4"){
          ManagerReport m = new ManagerReport(instructions[1]);
+         Logger.writeln(""+m);
       }
       //If first element in input array is 5: Day change signal
       else if(instructions[0] == "@5"){
