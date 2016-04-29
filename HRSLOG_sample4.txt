@@ -33,3 +33,38 @@ Check Out completed, Bernard L. Silver. Thank you for choosing Butts Motel!
 Nights Reserved: 2
 Total Cost: 160.0
 
+Make Reservation request for Bernard L. Silver:
+Reservation: Success
+Guaranteed: True
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 0 & Reservation ID: 0.
+
+Make Reservation request for Paul H. Grant:
+Reservation: Success
+Guaranteed: False
+Check In: January 2, 2015
+Check Out: January 3, 2015
+Customer ID: 1 & Reservation ID: 1.
+
+============January 2, 2015============
+
+Bernard L. Silver successfully checked customer in.
+
+Check In Statement:
+Customer Name: Bernard L. Silver
+Nights reserved: 2
+Nightly Rate: 80
+Check In: January 1, 2015
+Check Out: January 3, 2015
+
+No such customer found!
+
+============January 3, 2015============
+
+Bernard L. Silver charged $160.00.
+
+Check Out completed, Bernard L. Silver. Thank you for choosing Butts Motel!
+Nights Reserved: 2
+Total Cost: 160.0
+

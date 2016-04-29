@@ -41,15 +41,10 @@ public class ManagerReport{
    
       while(iterate.hasNext()) {
          reserve = Framework.getReservationByID((int)iterate.next());
-         if(reserve.getStatus() == Framework.STATUS_CHECKED_IN || reserve.getStatus() == Framework.STATUS_MUST_PAY){
-            if(reserve.getStatus() == Framework.STATUS_CHECKED_IN){
-               
-            }
-            if(reserve.getRoomType() == 1)
-               singles++;
-            else
-               doubles++;
-         }
+         if (reserve.getRoomType()==1)
+            singles++;
+         else
+            doubles++;
       }
    
       this.revenue = (Framework.SINGLE_RATE * (double)singles) + (Framework.DOUBLE_RATE * (double)doubles);
