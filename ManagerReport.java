@@ -24,8 +24,8 @@ public class ManagerReport{
    double revenue = 0;
    ArrayList<Integer> reservations;
 
-   public ManagerReport(String instruction){
-      this.currentDay = Calendar.getDate((Integer.parseInt(instruction)));
+   public ManagerReport(){
+      this.currentDay = Calendar.getCurrentDate();
       buildReport();
    }
    
@@ -80,22 +80,5 @@ public class ManagerReport{
       "Double Rooms Reserved: "+doubles+"\n"+
       "Occupancy Rate: "+rf.format(occupancyRate)+"%"+"\n"+
       "Total Revenue: $"+df.format(revenue);
-   }
-
-   // testing manager report
-   public static void main(String[] args)
-   {
-      try
-      {
-         Framework.init(args[1]);
-      }
-      catch (Exception e)
-      {
-
-      }
-      Calendar.initCalendar();
-      Calendar.buildCalendar();
-      ManagerReport rep = new ManagerReport("1");
-      System.out.println(rep);
    }
 }

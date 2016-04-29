@@ -48,7 +48,7 @@ public class CreateReservation
          customer.setCCType(inReservationInfo[8]);
          customer.setCCExpiration(inReservationInfo[9]);
          customer.setCCNumber(inReservationInfo[10]);
-         if(BankSystem.validateCard(customer.getCCType(), customer.getCCExpiration(), customer.getCCNumber()) == false){
+         if(BankSystem.validateCard(customer.getCCNumber(), customer.getCCType(), customer.getCCExpiration()) == false){
             return "Invalid credit card. Unable to create reservation.\n";
          }
       }

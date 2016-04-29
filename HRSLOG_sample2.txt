@@ -1,0 +1,46 @@
+No such customer found!
+No such customer found!
+Successfully created reservation. Your Customer ID is: 0 and your Reservation ID is: 0.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Check Out could not be completed. Please re-enter information and try again!
+Successfully created reservation. Your Customer ID is: 1 and your Reservation ID is: 1.
+
+Successfully created reservation. Your Customer ID is: 2 and your Reservation ID is: 2.
+
+Successfully created reservation. Your Customer ID is: 2 and your Reservation ID is: 2.
+
+Successfully created reservation. Your Customer ID is: 2 and your Reservation ID is: 2.
+
+Scott A. Lacombe was not successfully checked in.
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Invalid credit card. Unable to create reservation.
+
+Check Out could not be completed. Please re-enter information and try again!
+Check Out could not be completed. Please re-enter information and try again!
+Paul H. Grant was not successfully checked in.
+Paul H. Grant was not successfully checked in.
+Check Out could not be completed. Please re-enter information and try again!
+Check Out could not be completed. Please re-enter information and try again!
+Management Report for 1/15/2015
+Number of Reservations: 0
+Single Rooms Reserved: 0
+Double Rooms Reserved: 0
+Occupancy Rate: 0%
+Total Revenue: $0.00

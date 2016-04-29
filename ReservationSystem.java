@@ -43,8 +43,8 @@ public class ReservationSystem{
       }
       //If first element in input array is 4: Print management report
       else if(instructions[0].equals("4")){
-         ManagerReport m = new ManagerReport(instructions[1]);
-         Logger.writeln(""+m);
+         ManagerReport m = new ManagerReport();
+         output = m.toString();
       }
       //If first element in input array is 5: Day change signal
       else if(instructions[0].equals("5")){
@@ -57,6 +57,7 @@ public class ReservationSystem{
 		
 		//Sends any necessary results or requests back to UserIO for processing.
 		//Accesses the static UserIO instance.
+      Logger.writeln(""+output);
 		UserIO.IO_Object.returnInstructions(output);
    }
 }

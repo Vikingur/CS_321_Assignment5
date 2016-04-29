@@ -23,11 +23,10 @@ EXIT
 public class UserIO {
 	//Mostly just calls the Framework functions to create the queue and get instructions.
 	//This method will be called by main.
-   private ArrayList<String[]> instructionQueue;
    public static UserIO IO_Object;
 
    public UserIO(){
-      instructionQueue = new ArrayList<String[]>();
+     // instructionQueue = new ArrayList<String[]>();
    }
 
    public static void main(String[] args){
@@ -46,13 +45,12 @@ public class UserIO {
       }
       if(Framework.hasNextInstruction()){
          IO_Object.loadInstruction(Framework.nextInstruction());
-         ReservationSystem.systemCoordinator.processInstructions(IO_Object.instructionQueue.get(0));
       }
       Logger.closeLogger();
    }
 
    public void loadInstruction(String[] instruction){
-      instructionQueue.add(instruction);
+      ReservationSystem.systemCoordinator.processInstructions(Framework.nextInstruction());
    }
 
    public void returnInstructions(String instruction){
@@ -60,8 +58,7 @@ public class UserIO {
    	//If the message has no specific need, like re-entering instructions,
    	//simply print and call the next set of instructions.
       if(Framework.hasNextInstruction()){
-         loadInstruction(Framework.nextInstruction());
-         ReservationSystem.systemCoordinator.processInstructions(IO_Object.instructionQueue.get(0));
+         ReservationSystem.systemCoordinator.processInstructions(Framework.nextInstruction());
       }
    }
 }

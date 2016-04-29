@@ -10,7 +10,9 @@ public class CheckIn{
 
    public static String checkIn(String[] inCustomerInfo){
       Customer customer = Framework.getCustomerByName(inCustomerInfo[1]);
-
+      if(customer == null){
+         return "No such customer found!";
+      }
       //Check to see if credit card info is provided, and update info if necessary
       if(inCustomerInfo.length == 5){
          customer.setCCType(inCustomerInfo[2]);
