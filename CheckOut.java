@@ -5,14 +5,6 @@
 import java.util.*;
 
 public class CheckOut {
-   //Class variables
-   Reservation reservation;
-   boolean checkedOut = false;
-   boolean reservationComplete = false;
-   boolean paid = false;
-   double payment;
-   int customer;
-
    public static String checkOut(String[] instructions){
       Customer customer = Framework.getCustomerByName(instructions[1]);
       Reservation reservation = Framework.getReservationByCID(customer.getCustomerID());

@@ -5,13 +5,13 @@ public class Calendar {
 	//Class variables
 	private static ArrayList<Date> dates;
 	private static Date currentDate;
-   	private static int currentDateInt;
+   private static int currentDateInt;
 
 	//Class constructor
 	public static void initCalendar() {
 		dates = new ArrayList<Date>();
 		buildCalendar();
-      	currentDateInt = 1;
+      currentDateInt = 1;
 		currentDate = dates.get(0);
 	}
 
