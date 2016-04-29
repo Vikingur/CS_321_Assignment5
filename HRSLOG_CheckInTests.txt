@@ -19,17 +19,3 @@ Nights reserved: 3
 Nightly Rate: 80
 Check In: January 4, 2015
 Check Out: January 7, 2015
-
-Sevan successfully checked customer in.
-
-Check In Statement:
-Customer Name: Sevan
-Nights reserved: 3
-Nightly Rate: 80
-Check In: January 4, 2015
-Check Out: January 7, 2015
-
-Jung-Hee was not successfully checked in. No credit card data was received.
-
-Farah was not successfully checked in. Invalid credit card.
-
