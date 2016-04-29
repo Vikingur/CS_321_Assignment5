@@ -1,0 +1,67 @@
+Successfully created reservation, Bernard L. Silver. Your Customer ID is: 0 and your Reservation ID is: 0.
+
+Bernard L. Silversuccessfully checked customer in.
+
+Check In Statement:
+Customer Name: Bernard L. Silver
+Nights reserved: 2
+Nightly Rate: 80
+Check In: January 1, 2015
+Check Out: January 3, 2015
+
+Successfully created reservation, Paul H. Grant. Your Customer ID is: 1 and your Reservation ID is: 1.
+
+Successfully created reservation, Cathrine J. Karam. Your Customer ID is: 2 and your Reservation ID is: 2.
+
+Bernard L. Silver charged $160.00.
+
+Check Out completed. Thank you for choosing us!
+Hotel Name
+Nights Reserved: 2
+Total Cost: 160.0
+
+Successfully created reservation, Scott A. Lacombe. Your Customer ID is: 3 and your Reservation ID is: 3.
+
+Successfully created reservation, Chester D. Morgan. Your Customer ID is: 4 and your Reservation ID is: 4.
+
+Scott A. Lacombesuccessfully checked customer in.
+
+Check In Statement:
+Customer Name: Scott A. Lacombe
+Nights reserved: 7
+Nightly Rate: 100
+Check In: January 5, 2015
+Check Out: January 12, 2015
+
+Successfully created reservation, Christopher A. Woods. Your Customer ID is: 5 and your Reservation ID is: 5.
+
+Scott A. Lacombe charged $700.00.
+
+Check Out completed. Thank you for choosing us!
+Hotel Name
+Nights Reserved: 7
+Total Cost: 700.0
+
+Paul H. Grantsuccessfully checked customer in.
+
+Check In Statement:
+Customer Name: Paul H. Grant
+Nights reserved: 1
+Nightly Rate: 80
+Check In: January 13, 2015
+Check Out: January 14, 2015
+
+Paul H. Grant charged $80.00.
+
+Check Out completed. Thank you for choosing us!
+Hotel Name
+Nights Reserved: 1
+Total Cost: 80.0
+
+Management Report for 1/15/2015
+Number of Reservations: 0
+Single Rooms Reserved: 0
+Double Rooms Reserved: 0
+Occupancy Rate: 0%
+Total Revenue: $0.00
+

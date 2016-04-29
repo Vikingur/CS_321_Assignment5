@@ -10,7 +10,7 @@ public class CheckOut {
       if(customer != null){
          Reservation reservation = Framework.getReservationByCID(customer.getCustomerID());
       
-         if(reservation != null){
+         if(reservation != null && reservation.getStatus() == Framework.STATUS_CHECKED_IN){
             int daysReserved = reservation.getEndDate() - reservation.getStartDate();
             double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;
          
@@ -32,9 +32,9 @@ public class CheckOut {
       if(reservation != null){
          String report = "Check Out completed. Thank you for choosing us!\n";
          report += "Hotel Name\n";
-         report += "Nights Reserved: "+(reservation.getStartDate() - reservation.getEndDate()) + "\n";
+         report += "Nights Reserved: "+(reservation.getEndDate() - reservation.getStartDate()) + "\n";
          double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;    
-         double payment = (reservation.getStartDate() - reservation.getEndDate()) * nightlyCharge;
+         double payment = (reservation.getEndDate() - reservation.getStartDate()) * nightlyCharge;
          report += "Total Cost: "+ payment + "\n";
          return report;
       }

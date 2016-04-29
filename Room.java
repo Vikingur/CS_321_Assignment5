@@ -27,8 +27,10 @@ public class Room{
    
    //Creates room lists for single and doubles. Single room#s are 1-#singleRooms and double room#s are (#singleRooms+1)-(#doubleRooms+#singleRooms)
    public static void populateRooms(){
-      for(int a = 1; a <= singleRooms.size(); a++){singleRooms.set(a-1, new Room(a,1));}
-      for(int b = 1; b <= doubleRooms.size(); b++){doubleRooms.set(b-1, new Room(b+singleRooms.size(), 2));}
+   System.out.println(Framework.NUM_SINGLE_ROOMS);
+   System.out.println(Framework.NUM_DOUBLE_ROOMS);
+      for(int a = 1; a <= Framework.NUM_SINGLE_ROOMS; a++){singleRooms.add(new Room(a,1));}
+      for(int b = 1; b <= Framework.NUM_DOUBLE_ROOMS; b++){doubleRooms.add(new Room(b+singleRooms.size(), 2));}
    }
    
 	//Class setters

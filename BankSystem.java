@@ -23,12 +23,11 @@ public class BankSystem
       //Grab the Month/Year and convert to integers
       int expirationMonth = Integer.parseInt(ccMonthYear[0]);
       int expirationYear = Integer.parseInt(ccMonthYear[1]);
-      System.out.println(expirationMonth + " " +expirationYear);
+
 		//Get the current date
 		Date date = Calendar.getCurrentDate();
       int currentMonth = date.getMonth();
       int currentYear = date.getYear();
-      System.out.println(currentMonth + " " +currentYear);
               
     //Compare the current month/year to the card's expiration month/year
     if ((currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)))
@@ -53,14 +52,16 @@ public class BankSystem
 		if (validateCard(ccNumber,ccType,ccExpiration))
 		{
 			// if valid, "charge" customer, return true for success
-			System.out.println(""+c.getName()+" charged $"+String.format("%.2f",paymentAmount)+".\n");
+			Logger.writeln(""+c.getName()+" charged $"+String.format("%.2f",paymentAmount)+".\n");
+         System.out.println(""+c.getName()+" charged $"+String.format("%.2f",paymentAmount)+".\n");
 			return true;
 		}
 		else
 		{
 			// otherwise, report that the charge was unsuccessful
+			Logger.writeln("Card is invalid. No payment made.\n");
 			System.out.println("Card is invalid. No payment made.\n");
-			return false;
+         return false;
 		}
 	}
 }

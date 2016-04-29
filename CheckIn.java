@@ -34,7 +34,7 @@ public class CheckIn{
       int RID = reservation.getReservationID();
 
       int roomNum = Room.findRoom(reservation.getRoomType());
-      if(roomNum == -1){return (customer.getName() + " was not successfully checked in. No available rooms.\n");}
+      if(roomNum <= 0){return (customer.getName() + " was not successfully checked in. No available rooms.\n");}
       reservation.setRoomNumber(roomNum);
 
       //Flag reservation as checked-in and modify it in Framework
@@ -43,8 +43,8 @@ public class CheckIn{
 
       int rate = (reservation.getRoomType() == 1) ? Framework.SINGLE_RATE : Framework.DOUBLE_RATE;
 
-      return (customer.getName()+"successfully checked customer in.\n\nCheck In Statement:\n" +
-         "Customer Name: "+customer.getName()+"\nNights reserved: "+(reservation.getEndDate()-reservation.getStartDate()) +
+      return (customer.getName()+" successfully checked customer in.\n\nCheck In Statement:\n" +
+         "Customer Name: "+customer.getName()+"\nNights reserved: "+(reservation.getStartDate()-reservation.getEndDate()) +
          "\nNightly Rate: "+rate+"\nCheck In: January "+reservation.getStartDate()+", 2015" +
          "\nCheck Out: January "+reservation.getEndDate()+", 2015\n");
    }

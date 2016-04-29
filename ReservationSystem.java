@@ -9,32 +9,32 @@ import java.lang.*;
 
 public class ReservationSystem{
    //Class variables
-	private String instructions[];
-	private String output;
+   private String instructions[];
+   private String output;
    
    //Static 'global' variables
-	public static ReservationSystem systemCoordinator;
+   public static ReservationSystem systemCoordinator;
 	
    //Class constructors
-	public ReservationSystem(){}
-	public static ReservationSystem generateSystem(){
-		if(systemCoordinator == null){systemCoordinator = new ReservationSystem();}
+   public ReservationSystem(){}
+   public static ReservationSystem generateSystem(){
+      if(systemCoordinator == null){systemCoordinator = new ReservationSystem();}
       Calendar.initCalendar();
       Room room = new Room();
       Room.populateRooms();
       BankSystem bankSystem = new BankSystem();
-		return systemCoordinator;
-	}
+      return systemCoordinator;
+   }
 
    //Reads instruction relayed by userIO and initiates appropriate process
-	public void processInstructions(String[] inInstructions)
+   public void processInstructions(String[] inInstructions)
    {
-		instructions = inInstructions;
-
+      instructions = inInstructions;
+      output = null;
       //If first element in input array is 1: Create reservation
-		if(instructions[0].equals("1")){
-          output = CreateReservation.makeReservation(instructions);
- 		}
+      if(instructions[0].equals("1")){
+         output = CreateReservation.makeReservation(instructions);
+      }
       //If first element in input array is 2: Check-in
       else if(instructions[0].equals("2")){
          output = CheckIn.checkIn(instructions);
@@ -56,10 +56,12 @@ public class ReservationSystem{
       else if(instructions[0].equals("6")){
          ProcessReservations.checkReservations(Calendar.getCurrentDate());
       }
-		
-		//Sends any necessary results or requests back to UserIO for processing.
-		//Accesses the static UserIO instance.
-      Logger.writeln(""+output);
-		UserIO.IO_Object.returnInstructions(output);
+   	
+   	//Sends any necessary results or requests back to UserIO for processing.
+   	//Accesses the static UserIO instance.
+      if(output != null){
+         System.out.println(output);
+         Logger.writeln(output);
+      }
    }
 }
