@@ -12,11 +12,34 @@ public class CreateReservation
       
       Reservation reservation = new Reservation();
       reservation.setStatus(1);
+      
       reservation.setStartDate(Integer.parseInt(inReservationInfo[3]));
+      if(reservation.getStartDate() > 31 || reservation.getStartDate() < 1){
+         return "Invalid start date. Unable to create reservation.\n"
+      }
+      
       reservation.setEndDate(Integer.parseInt(inReservationInfo[4]));
+      if(reservation.getEndDate() > 31 || reservation.getEndDate() < 1){
+         return "Invalid end date. Unable to create reservation.\n"
+      }
+      
+      if(reservation.getEndDate() >= reservation.getStartDate()){
+         return "Specified end date is before start date. Unable to create reservation.\n";
+      }
+      
       reservation.setRoomType(Integer.parseInt(inReservationInfo[5]));
+      if(reservation.getRoomType() > 2 || reservation.getRoomType() < 1){
+         return "Specified room type is not valid. Unable to create reservation.\n";
+      }
       reservation.setNumOccupants(Integer.parseInt(inReservationInfo[6]));
+      if(reservation.getNumOccupants() > 4 || reservation.getNumOccupants() < 1){
+         return "Invalid number of occupants. Unable to create reservation.\n";
+      }
       reservation.setGuaranteed(Integer.parseInt(inReservationInfo[7]));
+      if(reservation.getGuaranteed() > 1 || reservation.getGuaranteed() < 0){
+         return "Invalid guarantee status. Unable to create reservation.\n");
+      }
+      
       //If reservation is guaranteed, read and store credit card info to customer
       if(Integer.parseInt(inReservationInfo[7]) == 1){
          customer.setCCType(inReservationInfo[8]);
@@ -31,6 +54,7 @@ public class CreateReservation
       (Calendar.getDate(Integer.parseInt(inReservationInfo[3]))).addReservation(RID);
       (Calendar.getDate(Integer.parseInt(inReservationInfo[4]))).addReservation(RID);
       
-      return "Successfully created reservation.\n";
+      return "Successfully created reservation. Your Customer ID is: " + CID + ".\n;
+;
    }
 }
