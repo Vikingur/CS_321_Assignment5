@@ -31,7 +31,7 @@ public class CheckOut {
       Reservation reservation = Framework.getReservationByID(reservationID);
       if(reservation != null){
          String report = "Check Out completed. Thank you for choosing us!\n";
-         report += "Hotel Name\n";
+         report += "Butts Motel\n";
          report += "Nights Reserved: "+(reservation.getEndDate() - reservation.getStartDate()) + "\n";
          double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;    
          double payment = (reservation.getEndDate() - reservation.getStartDate()) * nightlyCharge;

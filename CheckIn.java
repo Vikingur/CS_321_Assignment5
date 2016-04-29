@@ -44,7 +44,7 @@ public class CheckIn{
       int rate = (reservation.getRoomType() == 1) ? Framework.SINGLE_RATE : Framework.DOUBLE_RATE;
 
       return (customer.getName()+" successfully checked customer in.\n\nCheck In Statement:\n" +
-         "Customer Name: "+customer.getName()+"\nNights reserved: "+(reservation.getStartDate()-reservation.getEndDate()) +
+         "Customer Name: "+customer.getName()+"\nNights reserved: "+(reservation.getEndDate()-reservation.getStartDate()) +
          "\nNightly Rate: "+rate+"\nCheck In: January "+reservation.getStartDate()+", 2015" +
          "\nCheck Out: January "+reservation.getEndDate()+", 2015\n");
    }
