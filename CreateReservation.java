@@ -23,7 +23,7 @@ public class CreateReservation
          return "Invalid end date. Unable to create reservation.\n";
       }
       
-      if(reservation.getEndDate() >= reservation.getStartDate()){
+      if(reservation.getEndDate() <= reservation.getStartDate()){
          return "Specified end date is before start date. Unable to create reservation.\n";
       }
       
@@ -61,7 +61,7 @@ public class CreateReservation
       (Calendar.getDate(Integer.parseInt(inReservationInfo[3]))).addReservation(RID);
       (Calendar.getDate(Integer.parseInt(inReservationInfo[4]))).addReservation(RID);
       
-      return "Successfully created reservation. Your Customer ID is: " + CID + ".\n";
+      return "Successfully created reservation. Your Customer ID is: " + CID + " and your Reservation ID is: " + RID + ".\n";
 
    }
 }
