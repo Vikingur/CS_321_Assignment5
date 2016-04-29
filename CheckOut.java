@@ -7,23 +7,37 @@ import java.util.*;
 public class CheckOut {
    public static String checkOut(String[] instructions){
       Customer customer = Framework.getCustomerByName(instructions[1]);
-      Reservation reservation = Framework.getReservationByCID(customer.getCustomerID());
+      if(customer != null){
+         Reservation reservation = Framework.getReservationByCID(customer.getCustomerID());
       
-      int daysReserved = reservation.getEndDate() - reservation.getStartDate();
-      double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;
-      
-      double payment = daysReserved * nightlyCharge;
-   
-      if(BankSystem.chargeCustomer(customer.getCustomerID(), payment)){
-         Room.vacateRoom(reservation.getRoomType(), reservation.getRoomNumber());
-         reservation.setStatus(Framework.STATUS_CHECKED_OUT);
-         Framework.modifyReservation(reservation.getReservationID(), reservation);
-         return "Check Out completed. Thank you for choosing us!";
+         if(reservation != null){
+            int daysReserved = reservation.getEndDate() - reservation.getStartDate();
+            double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;
+         
+            double payment = daysReserved * nightlyCharge;
+         
+            if(BankSystem.chargeCustomer(customer.getCustomerID(), payment)){
+               Room.vacateRoom(reservation.getRoomType(), reservation.getRoomNumber());
+               reservation.setStatus(Framework.STATUS_CHECKED_OUT);
+               Framework.modifyReservation(reservation.getReservationID(), reservation);
+               return checkOutReceipt(reservation.getReservationID());
+            }
+         }
       }
       return "Check Out could not be completed. Please re-enter information and try again!";
    }
    
    public static String checkOutReceipt(int reservationID){
-      return "";
+      Reservation reservation = Framework.getReservationByID(reservationID);
+      if(reservation != null){
+         String report = "Check Out completed. Thank you for choosing us!\n";
+         report += "Hotel Name\n";
+         report += "Nights Reserved: "+(reservation.getStartDate() - reservation.getEndDate()) + "\n";
+         double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;    
+         double payment = (reservation.getStartDate() - reservation.getEndDate()) * nightlyCharge;
+         report += "Total Cost: "+ payment + "\n";
+         return report;
+      }
+      return null;
    }
 }
