@@ -47,6 +47,7 @@ public class CreateReservation
          customer.setCCNumber(inReservationInfo[10]);
       }
       int CID = Framework.storeCustomer(customer);
+      customer.setCustomerID(CID);
       reservation.setCustomerID(CID);
       int RID = Framework.storeReservation(reservation);
       
