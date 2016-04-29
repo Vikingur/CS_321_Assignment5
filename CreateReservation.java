@@ -15,12 +15,12 @@ public class CreateReservation
       
       reservation.setStartDate(Integer.parseInt(inReservationInfo[3]));
       if(reservation.getStartDate() > 31 || reservation.getStartDate() < 1){
-         return "Invalid start date. Unable to create reservation.\n"
+         return "Invalid start date. Unable to create reservation.\n";
       }
       
       reservation.setEndDate(Integer.parseInt(inReservationInfo[4]));
       if(reservation.getEndDate() > 31 || reservation.getEndDate() < 1){
-         return "Invalid end date. Unable to create reservation.\n"
+         return "Invalid end date. Unable to create reservation.\n";
       }
       
       if(reservation.getEndDate() >= reservation.getStartDate()){
@@ -31,13 +31,16 @@ public class CreateReservation
       if(reservation.getRoomType() > 2 || reservation.getRoomType() < 1){
          return "Specified room type is not valid. Unable to create reservation.\n";
       }
+      if(Calendar.checkRoomAvailability(reservation.getRoomType(), reservation.getEndDate()) == false){
+         return "No available rooms of that type in this time frame. Unable to create reservation.\n";
+      }
       reservation.setNumOccupants(Integer.parseInt(inReservationInfo[6]));
       if(reservation.getNumOccupants() > 4 || reservation.getNumOccupants() < 1){
          return "Invalid number of occupants. Unable to create reservation.\n";
       }
       reservation.setGuaranteed(Integer.parseInt(inReservationInfo[7]));
       if(reservation.getGuaranteed() > 1 || reservation.getGuaranteed() < 0){
-         return "Invalid guarantee status. Unable to create reservation.\n");
+         return "Invalid guarantee status. Unable to create reservation.\n";
       }
       
       //If reservation is guaranteed, read and store credit card info to customer
@@ -55,7 +58,7 @@ public class CreateReservation
       (Calendar.getDate(Integer.parseInt(inReservationInfo[3]))).addReservation(RID);
       (Calendar.getDate(Integer.parseInt(inReservationInfo[4]))).addReservation(RID);
       
-      return "Successfully created reservation. Your Customer ID is: " + CID + ".\n;
-;
+      return "Successfully created reservation. Your Customer ID is: " + CID + ".\n";
+
    }
 }
