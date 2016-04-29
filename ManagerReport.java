@@ -40,11 +40,16 @@ public class ManagerReport{
       doubles = 0;
    
       while(iterate.hasNext()) {
-         reserve = (Reservation)iterate.next();
-         if(reserve.getRoomType() == 1)
-            singles++;
-         else
-            doubles++;
+         reserve = Framework.getReservationByID((int)iterate.next());
+         if(reserve.getStatus() == Framework.STATUS_CHECKED_IN || reserve.getStatus() == Framework.STATUS_MUST_PAY){
+            if(reserve.getStatus() == Framework.STATUS_CHECKED_IN){
+               
+            }
+            if(reserve.getRoomType() == 1)
+               singles++;
+            else
+               doubles++;
+         }
       }
    
       this.revenue = (Framework.SINGLE_RATE * (double)singles) + (Framework.DOUBLE_RATE * (double)doubles);
@@ -75,10 +80,10 @@ public class ManagerReport{
       int day = currentDay.getDay();
       int year = currentDay.getYear();
       return "Management Report for "+month+"/"+day+"/"+year+"\n"+
-      "Number of Reservations: "+reservationNum+"\n"+
-      "Single Rooms Reserved: "+singles+"\n"+
-      "Double Rooms Reserved: "+doubles+"\n"+
-      "Occupancy Rate: "+rf.format(occupancyRate)+"%"+"\n"+
-      "Total Revenue: $"+df.format(revenue)+"\n";
+         "Number of Reservations: "+reservationNum+"\n"+
+         "Single Rooms Reserved: "+singles+"\n"+
+         "Double Rooms Reserved: "+doubles+"\n"+
+         "Occupancy Rate: "+rf.format(occupancyRate)+"%"+"\n"+
+         "Total Revenue: $"+df.format(revenue)+"\n";
    }
 }

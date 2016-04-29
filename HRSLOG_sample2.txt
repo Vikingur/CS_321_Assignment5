@@ -1,6 +1,11 @@
-Successfully created reservation, Bernard L. Silver. Your Customer ID is: 0 and your Reservation ID is: 0.
+Make Reservation request for Bernard L. Silver:
+Reservation: Success
+Guaranteed: True
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 0 & Reservation ID: 0.
 
-Bernard L. Silversuccessfully checked customer in.
+Bernard L. Silver successfully checked customer in.
 
 Check In Statement:
 Customer Name: Bernard L. Silver
@@ -9,22 +14,50 @@ Nightly Rate: 80
 Check In: January 1, 2015
 Check Out: January 3, 2015
 
-Successfully created reservation, Paul H. Grant. Your Customer ID is: 1 and your Reservation ID is: 1.
+============January 2, 2015============
 
-Successfully created reservation, Cathrine J. Karam. Your Customer ID is: 2 and your Reservation ID is: 2.
+Make Reservation request for Paul H. Grant:
+Reservation: Success
+Guaranteed: False
+Check In: January 13, 2015
+Check Out: January 14, 2015
+Customer ID: 1 & Reservation ID: 1.
+
+Make Reservation request for Cathrine J. Karam:
+Reservation: Success
+Guaranteed: True
+Check In: January 26, 2015
+Check Out: January 31, 2015
+Customer ID: 2 & Reservation ID: 2.
+
+============January 3, 2015============
 
 Bernard L. Silver charged $160.00.
 
 Check Out completed. Thank you for choosing us!
-Hotel Name
+Butts Motel
 Nights Reserved: 2
 Total Cost: 160.0
 
-Successfully created reservation, Scott A. Lacombe. Your Customer ID is: 3 and your Reservation ID is: 3.
+Make Reservation request for Scott A. Lacombe:
+Reservation: Success
+Guaranteed: False
+Check In: January 5, 2015
+Check Out: January 12, 2015
+Customer ID: 3 & Reservation ID: 3.
 
-Successfully created reservation, Chester D. Morgan. Your Customer ID is: 4 and your Reservation ID is: 4.
+Make Reservation request for Chester D. Morgan:
+Reservation: Success
+Guaranteed: False
+Check In: January 27, 2015
+Check Out: January 28, 2015
+Customer ID: 4 & Reservation ID: 4.
 
-Scott A. Lacombesuccessfully checked customer in.
+============January 4, 2015============
+
+============January 5, 2015============
+
+Scott A. Lacombe successfully checked customer in.
 
 Check In Statement:
 Customer Name: Scott A. Lacombe
@@ -33,16 +66,37 @@ Nightly Rate: 100
 Check In: January 5, 2015
 Check Out: January 12, 2015
 
-Successfully created reservation, Christopher A. Woods. Your Customer ID is: 5 and your Reservation ID is: 5.
+Make Reservation request for Christopher A. Woods:
+Reservation: Success
+Guaranteed: True
+Check In: January 23, 2015
+Check Out: January 30, 2015
+Customer ID: 5 & Reservation ID: 5.
+
+============January 6, 2015============
+
+============January 7, 2015============
+
+============January 8, 2015============
+
+============January 9, 2015============
+
+============January 10, 2015============
+
+============January 11, 2015============
+
+============January 12, 2015============
 
 Scott A. Lacombe charged $700.00.
 
 Check Out completed. Thank you for choosing us!
-Hotel Name
+Butts Motel
 Nights Reserved: 7
 Total Cost: 700.0
 
-Paul H. Grantsuccessfully checked customer in.
+============January 13, 2015============
+
+Paul H. Grant successfully checked customer in.
 
 Check In Statement:
 Customer Name: Paul H. Grant
@@ -51,12 +105,16 @@ Nightly Rate: 80
 Check In: January 13, 2015
 Check Out: January 14, 2015
 
+============January 14, 2015============
+
 Paul H. Grant charged $80.00.
 
 Check Out completed. Thank you for choosing us!
-Hotel Name
+Butts Motel
 Nights Reserved: 1
 Total Cost: 80.0
+
+============January 15, 2015============
 
 Management Report for 1/15/2015
 Number of Reservations: 0

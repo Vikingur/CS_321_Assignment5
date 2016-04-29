@@ -24,8 +24,8 @@ public class Calendar {
 
 	//Class setters
 	public static void setCurrentDate(Date inDate){currentDate = inDate;}
-   public static void dayChange(){currentDateInt++; setCurrentDate(dates.get(currentDateInt-1));Logger.writeln("============January "+currentDate.getDay()+", 2015============");
-   System.out.println("============January "+currentDate.getDay()+", 2015============");}
+   public static void dayChange(){currentDateInt++; setCurrentDate(dates.get(currentDateInt-1));Logger.writeln("============January "+currentDate.getDay()+", 2015============\n");
+   System.out.println("============January "+currentDate.getDay()+", 2015============\n");}
 	
 	//Class getters
 	public static Date getCurrentDate(){return currentDate;}

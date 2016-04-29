@@ -1,0 +1,49 @@
+Make Reservation request for Bernard L. Silver:
+Reservation: Success
+Guaranteed: True
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 0 & Reservation ID: 0.
+
+Make Reservation request for Paul H. Grant:
+Reservation: Success
+Guaranteed: False
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 1 & Reservation ID: 1.
+
+Make Reservation request for Cathrine J. Karam:
+Reservation: Success
+Guaranteed: True
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 2 & Reservation ID: 2.
+
+Make Reservation request for Scott A. Lacombe:
+Reservation: Success
+Guaranteed: False
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 3 & Reservation ID: 3.
+
+Make Reservation request for Chester D. Morgan:
+Reservation: Success
+Guaranteed: False
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 4 & Reservation ID: 4.
+
+Make Reservation request for Christopher A. Woods:
+Reservation: Success
+Guaranteed: True
+Check In: January 1, 2015
+Check Out: January 3, 2015
+Customer ID: 5 & Reservation ID: 5.
+
+Management Report for 1/1/2015
+Number of Reservations: 6
+Single Rooms Reserved: 0
+Double Rooms Reserved: 0
+Occupancy Rate: 0%
+Total Revenue: $0.00
+

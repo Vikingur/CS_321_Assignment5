@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class HRC{
+public class HRS{
    public static void main(String[] args){
    //Creates the static instances of every Business Logic Class that will be needed.
       ReservationSystem.generateSystem();
