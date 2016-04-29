@@ -11,7 +11,8 @@ public class CheckIn{
    public static String checkIn(String[] inCustomerInfo){
       Customer customer = Framework.getCustomerByName(inCustomerInfo[1]);
       if(customer == null){
-         return "No such customer found!";
+         System.out.println("Missing Name: "+inCustomerInfo[1]);
+         return "No such customer found!\n";
       }
       //Check to see if credit card info is provided, and update info if necessary
       if(inCustomerInfo.length == 5){
@@ -26,14 +27,14 @@ public class CheckIn{
       boolean cardValid;
       if(customer.getCCNumber() != null){
           cardValid = BankSystem.validateCard(customer.getCCNumber(), customer.getCCType(), customer.getCCExpiration());
-          if(cardValid == false){return (customer.getName() + " was not successfully checked in.");}
-      }else {return (customer.getName() + " was not successfully checked in.");}
+          if(cardValid == false){return (customer.getName() + " was not successfully checked in. Invalid credit card.\n");}
+      }else {return (customer.getName() + " was not successfully checked in. No credit card data was received.\n");}
 
       Reservation reservation = Framework.getReservationByCID(CID);
       int RID = reservation.getReservationID();
 
       int roomNum = Room.findRoom(reservation.getRoomType());
-      if(roomNum == -1){return (customer.getName() + " was not successfully checked in.");}
+      if(roomNum == -1){return (customer.getName() + " was not successfully checked in. No available rooms.\n");}
       reservation.setRoomNumber(roomNum);
 
       //Flag reservation as checked-in and modify it in Framework
@@ -45,6 +46,6 @@ public class CheckIn{
       return (customer.getName()+"successfully checked customer in.\n\nCheck In Statement:\n" +
          "Customer Name: "+customer.getName()+"\nNights reserved: "+(reservation.getEndDate()-reservation.getStartDate()) +
          "\nNightly Rate: "+rate+"\nCheck In: January "+reservation.getStartDate()+", 2015" +
-         "\nCheck Out: January "+reservation.getEndDate()+", 2015");
+         "\nCheck Out: January "+reservation.getEndDate()+", 2015\n");
    }
 }

@@ -79,6 +79,6 @@ public class ManagerReport{
       "Single Rooms Reserved: "+singles+"\n"+
       "Double Rooms Reserved: "+doubles+"\n"+
       "Occupancy Rate: "+rf.format(occupancyRate)+"%"+"\n"+
-      "Total Revenue: $"+df.format(revenue);
+      "Total Revenue: $"+df.format(revenue)+"\n";
    }
 }

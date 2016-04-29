@@ -11,7 +11,7 @@ public class BankSystem
 {
     public static boolean validateCard(String ccNumber, String ccType, String ccExpiration)
     {
-		//Return false if card doesn't exist
+      //Return false if card doesn't exist
 		if (ccNumber == null){return false;}
       
       //Convert customer's credit card information into a long int
@@ -23,14 +23,15 @@ public class BankSystem
       //Grab the Month/Year and convert to integers
       int expirationMonth = Integer.parseInt(ccMonthYear[0]);
       int expirationYear = Integer.parseInt(ccMonthYear[1]);
-    		
+      System.out.println(expirationMonth + " " +expirationYear);
 		//Get the current date
 		Date date = Calendar.getCurrentDate();
       int currentMonth = date.getMonth();
       int currentYear = date.getYear();
-        
+      System.out.println(currentMonth + " " +currentYear);
+              
     //Compare the current month/year to the card's expiration month/year
-    if (String.valueOf(ccNumberLong).length()==16 && (currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)))
+    if ((currentYear < expirationYear || (currentYear == expirationYear && currentMonth <= expirationMonth)))
     {
         return true;
     }
@@ -52,13 +53,13 @@ public class BankSystem
 		if (validateCard(ccNumber,ccType,ccExpiration))
 		{
 			// if valid, "charge" customer, return true for success
-			System.out.println("Customer charged, $"+String.format("%.2f",paymentAmount)+".");
+			System.out.println(""+c.getName()+" charged $"+String.format("%.2f",paymentAmount)+".\n");
 			return true;
 		}
 		else
 		{
 			// otherwise, report that the charge was unsuccessful
-			System.out.println("Card is invalid. No payment made.");
+			System.out.println("Card is invalid. No payment made.\n");
 			return false;
 		}
 	}

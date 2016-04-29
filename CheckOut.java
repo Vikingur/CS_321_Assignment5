@@ -24,7 +24,7 @@ public class CheckOut {
             }
          }
       }
-      return "Check Out could not be completed. Please re-enter information and try again!";
+      return "Check Out could not be completed. Please re-enter information and try again!\n";
    }
    
    public static String checkOutReceipt(int reservationID){
