@@ -46,7 +46,6 @@ public class UserIO {
       if(Framework.hasNextInstruction()){
          IO_Object.loadInstruction(Framework.nextInstruction());
       }
-      Logger.closeLogger();
    }
 
    public void loadInstruction(String[] instruction){

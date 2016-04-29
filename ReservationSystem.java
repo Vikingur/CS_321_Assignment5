@@ -4,6 +4,7 @@
 */
 
 import java.util.*;
+import java.lang.*;
 
 
 public class ReservationSystem{
@@ -26,7 +27,8 @@ public class ReservationSystem{
 	}
 
    //Reads instruction relayed by userIO and initiates appropriate process
-	public void processInstructions(String[] inInstructions){
+	public void processInstructions(String[] inInstructions)
+   {
 		instructions = inInstructions;
 
       //If first element in input array is 1: Create reservation

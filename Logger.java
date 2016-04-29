@@ -5,38 +5,24 @@ import java.io.*;
 public class Logger
 {
 	public static String outFile;
-	public static String inFile;
-	public static PrintWriter out;
 	
-	public static void initLogger(String file)
+	public static void initLogger(String file) 
 	{
-		inFile = file;
-		outFile = "HRSLOG_"+inFile;
-		File f = new File(outFile);
-		try
-		{
-			out = new PrintWriter(f,"UTF-8");
-		}
-		catch (Exception e)
-		{
-			
-		}
-	}
-	
-	public static void closeLogger()
-	{
-		out.close();
+		File f = new File(file);
+		file = f.getName();
+		outFile = "HRSLOG_"+file;
 	}
 
 	public static void writeln(String s)
 	{
-		try
-		{
-			out.println(s);
+		try{
+			BufferedWriter out = new BufferedWriter(new FileWriter(outFile,true));
+			out.write(s+"\n");
+			out.close();
 		}
-		catch(Exception e)
+		catch (IOException e)
 		{
-
+			System.out.println("Error: "+e);
 		}
 	}
 }
