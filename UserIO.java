@@ -35,11 +35,11 @@ public class UserIO {
    	//Creates the static instances of every Business Logic Class that will be needed.
       ReservationSystem.generateSystem();
       UserIO.IO_Object = new UserIO();
-      Logger.initLogger(args[1]);
+      Logger.initLogger(args[0]);
    
    	//Starts up the system.
       try{
-         Framework.init(args[1]);
+         Framework.init(args[0]);
       }
       catch (FileNotFoundException ex){
       
