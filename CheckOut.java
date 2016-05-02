@@ -30,7 +30,7 @@ public class CheckOut {
    public static String checkOutReceipt(int reservationID){
       Reservation reservation = Framework.getReservationByID(reservationID);
       if(reservation != null){
-         String report = "Check Out completed, "+Framework.getCustomerByID(reservation.getCustomerID()).getName()+". Thank you for choosing Butts Motel!\n";
+         String report = "Check Out completed, "+Framework.getCustomerByID(reservation.getCustomerID()).getName()+". Thank you for choosing Mason Lodge!\n";
          report += "Nights Reserved: "+(reservation.getEndDate() - reservation.getStartDate()) + "\n";
          double nightlyCharge = (reservation.getRoomType() > 1) ? Framework.DOUBLE_RATE : Framework.SINGLE_RATE;    
          double payment = (reservation.getEndDate() - reservation.getStartDate()) * nightlyCharge;
